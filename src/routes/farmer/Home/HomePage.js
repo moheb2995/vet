@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import Fetch from '../../../components/Fetch'
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 
 const HomePage = () => {
   const [show,setshow] = useState(false)
@@ -9,31 +9,23 @@ const HomePage = () => {
   const [data,setdata] = useState([])
   const [update,setupdate] = useState(false)
   const navigate =useNavigate()
-
-  // if(data.code === "token_not_valid"){
-    // setupdate(!update)
-  // }
-
-  // useEffect(()=>{
-    // setupdate(!update)
-  // },[])
+  const id = useParams().id
+  console.log(id);
 
   useEffect(()=>{
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/salons/${'?farmer_id=e884e1ca-56de-43b0-a44a-015bca594290'}`
+    const api=`/api/v1/salons/?farmer_id=${id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[update])
 
   const addSalon=async()=>{
-    const body = { name, location, 'farmer': "eae7fc03-3907-4cd9-8194-15b0e8e25532" }
+    const body = { name, location, farmer: id }
     const token = true
     const method = 'POST'
     const api = '/api/v1/salons/create/'
-    // if(name && location ){
-      Fetch(body,token,setdata,method,api,navigate)
-    // }
+    Fetch(body,token,setdata,method,api,navigate)
   }
   
   if(data.length === 0)return <h1>loading...</h1>
@@ -44,7 +36,7 @@ return (
       <button className='text-[#142aec] bold border-[1.5px] border-[#3849e0] p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن سالن </button>
       {
         data.length > 0?
-        data.map(i =><Link key={i.id} to={`Salon/:${i.id}`}><h4 className="border w-ful rounded-lg p-1 px-4 ml-5 mt-4">{i.name} </h4></Link>)
+        data.map(i =><Link key={i.id} to={`SalonID/${i.id}`}><h4 className="border w-ful rounded-lg p-1 px-4 ml-5 mt-4">{i.name} </h4></Link>)
         :''
       }
     </div>

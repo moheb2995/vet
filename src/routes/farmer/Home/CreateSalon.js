@@ -3,13 +3,13 @@ import Fetch from '../../../components/Fetch'
 import { useNavigate } from 'react-router-dom'
 
 const CreateSalon = ({setshow, id}) => {
-  const [date,setdate] = useState('2023-4-2')
+  const [date,setdate] = useState('2023-6-2')
   const [type,settype] = useState('LAYING')
   const [race,setrace] = useState('something')
   const [age,setage] = useState('')
   const [name,setname] = useState('somthing')
 
-  const [started,setstarted] = useState(false)
+  const [started,setstarted] = useState(null)
   const [firstNum,setfirstNum] = useState('950000')
   const [lastNum,setlastNum] = useState('950000')
 
@@ -49,8 +49,8 @@ return (
     <div className="z-40 bg-white rounded-xl p-8 px-14 fixed top-[9vh] ">
       <div className="flex justify-between w-full gap-7 ">
         <div className="w-20">
-          <h4 className="mt-1">  نوع مرغ </h4>
-          <h4 className="mt-8">  نژاد گله </h4>
+          <h4 className="mt-1"> نوع مرغ </h4>
+          <h4 className="mt-8"> نژاد گله </h4>
           <h4 className="mt-7"> سن گله </h4>
           <h4 className="mt-7"> نام گله مادر </h4>
         </div>
@@ -72,12 +72,12 @@ return (
       </div>
       <div className="mt-8 flex justify-between items-center">
         <div className="">
-          <h5 className="inline-block ">تعداد کل پرنده در روز اول: </h5><br />
-          <h5 className="inline-block my-4 ">  تاریخ شروع پرورش : </h5><br />
+          <h5 className="inline-block ">  تاریخ شروع پرورش : </h5><br />
+          <h5 className="inline-block my-4 ">تعداد کل پرنده در روز اول: </h5><br />
           <h5 className="inline-block ">تعداد کل پرنده در حال حاضر:</h5><br />
         </div>
         <div className="">
-          <input className='w-28 my-0.5 ' type="number" value={date} onChange={e => setdate(e.target.value)} /> <br />
+          <input className='w-28 my-0.5 ' value={date} onChange={e => setdate(e.target.value)} /> <br />
           <input className='w-28 my-0.5 ' type="number" value={firstNum} onChange={e => setfirstNum(e.target.value)} /> <br />
           <input className='w-28 my-0.5 ' type="number" value={lastNum} onChange={e => setlastNum(e.target.value)} /> <br />
         </div>

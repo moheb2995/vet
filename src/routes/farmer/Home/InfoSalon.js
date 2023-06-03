@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Fetch from '../../../components/Fetch'
-import { useNavigate,Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import Cookies from "universal-cookie";
 
-const InfoSalon = ({setshow2}) => {
+const InfoSalon = ({setshow2, EpochId }) => {
   const [data,setdata] = useState('')
   const [update,setupdate] = useState(false)
   const cookies = new Cookies()
   const epoch_id = cookies.get('epoch_id')
-  // const start_date = cookies.get('start_date')
   const navigate =useNavigate()
-
+  const params = useParams()
+  const param = `EpochId/${EpochId}`
   useEffect(()=>{
     setupdate(!update)
   },[])
@@ -22,6 +22,10 @@ const InfoSalon = ({setshow2}) => {
     const api=`/api/v1/epochs/detail/?epoch_id=${epoch_id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[update])
+
+  function ok(){
+    if(window.confirm(' آیا از این کار اطمینان دارید این عمل غیر قابل بازگشت است')){alert('ok')}
+  }
 
 return (
 <>
@@ -49,8 +53,12 @@ return (
           <p className="mt-2">tfhf</p>
         </div>
       </div>
-      <Link to={`/NavF/Record`}>record</Link>
-      <div className="flex justify-end"><button className='mt-6 bold underline underline-offset-8 text-black	'> اتمام دوره پرورش </button></div>
+      <div className="flex justify-center mt-7 ">
+        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/View`}> نمایش اطلاعات </Link>
+        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/Record`}> اطلاعات ثبت </Link>
+        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/NavO`}> پیشنهادات </Link>
+        <button onClick={ok} className='mx-4 bold underline underline-offset-8 text-black'> اتمام دوره پرورش </button>
+      </div>
     </div>
   </div>
 </>

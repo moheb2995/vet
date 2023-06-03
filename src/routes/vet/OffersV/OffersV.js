@@ -16,11 +16,11 @@ return (
 <>
   <div className='flex gap-10'>
     <nav className='border flex flex-col p-2 px-6 shadow-xl rounded-3xl text-center'>
-      <NavLink to={'/NavV/OffersV/O_VaccinationV'} className={({isActive}) => isActive? 'active':'not_active'}> واکسیناسیون </NavLink> <hr />
-      <NavLink to={'/NavV/OffersV/O_RationV'} className={({isActive}) => isActive? 'active':'not_active'}> جیره </NavLink> <hr />
-      <NavLink to={'/NavV/OffersV/O_LightClockV'} className={({isActive}) => isActive? 'active':'not_active '}> ساعات روشنایی </NavLink> <hr />
-      <NavLink to={'/NavV/OffersV/O_BeakV'} className={({isActive}) => isActive? 'active':'not_active'}> نوک چینی </NavLink> <hr />
-      <NavLink to={'/NavV/OffersV/O_prescriptionV'} className={({isActive}) => isActive? 'active':'not_active'}> نسخه </NavLink> 
+      <NavLink to={'O_VaccinationV'} className={({isActive}) => isActive? 'active':'not_active'}> واکسیناسیون </NavLink> <hr />
+      <NavLink to={'O_RationV'} className={({isActive}) => isActive? 'active':'not_active'}> جیره </NavLink> <hr />
+      <NavLink to={'O_LightClockV'} className={({isActive}) => isActive? 'active':'not_active '}> ساعات روشنایی </NavLink> <hr />
+      <NavLink to={'O_BeakV'} className={({isActive}) => isActive? 'active':'not_active'}> نوک چینی </NavLink> <hr />
+      <NavLink to={'O_prescriptionV'} className={({isActive}) => isActive? 'active':'not_active'}> نسخه </NavLink> 
     </nav>
 
     <div className="w-full ">

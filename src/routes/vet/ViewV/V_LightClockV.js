@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams,useNavigate } from 'react-router-dom'
+import Fetch from '../../../components/Fetch'
 
 const V_LightClockV = () => {
+  const [data,setdata] = useState([])
+  const navigate =useNavigate()
+  const id = useParams().EpochId
+
+  useEffect(()=>{
+    const body=undefined
+    const token=true
+    const method='GET'
+    const api=`/api/v1/lighting/?epoch_id=${id}`
+    Fetch(body,token,setdata,method,api,navigate)
+  },[])
+
 return (
 <div className="flex justify-center text-center">
   <div className="border-2 rounded-3xl m-2 p-4 md:px-16 px-4 ">

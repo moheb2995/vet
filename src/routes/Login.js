@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Fetch from '../components/Fetch';
 import Cookies from "universal-cookie";
+// 09125844121 vet
+// 09128458202 vet
+// 09121111111 farmer
+// 
+// 09362580015 admin
 
 const Login = () => {
   const [userName,setuserName] = useState('09362580015')
   const [password,setpassword] = useState('123')
-  const [data,setdata] = useState({})
+  const [data,setdata] = useState({role:''})
   const navigate =useNavigate()
   const cookies = new Cookies()
 
@@ -16,8 +21,9 @@ const Login = () => {
     const method='POST'
     const api='/api/auth/token/'
     Fetch(body,token,setdata,method,api)
-    // if(data.){ navigate()}
   }
+  if(data.role === 'VET' ){ navigate(`/NavV/HomePageV/${data.id}`)}
+  if(data.role === "FARMER" ){ navigate(`/NavF/HomePage/${data.id}`)}
   if(data.access){ cookies.set('access',data.access)}
   if(data.refresh){ cookies.set('refresh',data.refresh)}
 

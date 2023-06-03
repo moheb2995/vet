@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./routes/Login";
 import HomePageV from "./routes/vet/HomePageV";
 import NavV from "./routes/vet/NavV";
+import Salons from "./routes/vet/Salons";
+import Epoch from "./routes/vet/Epoch";
 
 import OffersV from "./routes/vet/OffersV/OffersV";
 import O_BeakV from "./routes/vet/OffersV/O_BeakV";
@@ -11,7 +13,6 @@ import O_RationV from "./routes/vet/OffersV/O_RationV";
 import O_VaccinationV from "./routes/vet/OffersV/O_VaccinationV";
 import O_prescriptionV from "./routes/vet/OffersV/O_prescriptionV";
 
-import NavH from "./routes/farmer/Home/NAvH";
 import HomePage from "./routes/farmer/Home/HomePage";
 import Record from "./routes/farmer/Record/Record";
 import Salon from "./routes/farmer/Home/Salon";
@@ -48,15 +49,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
 
-        <Route path="NavF" element={<NavH />} >
-          <Route path="HomePage" element={<HomePage />} />
-          <Route path="HomePage/Salon/:id" element={<Salon />} />
-        </Route>
-
         <Route path='/NavF' element={<NavF/>} >
-          <Route path="Record" element={<Record />} />
+          <Route path="HomePage/:id" element={<HomePage />} />
+          <Route path="HomePage/:id/SalonId/:SalonId" element={<Salon />} />
+          <Route path="HomePage/:id/SalonId/:SalonId/EpochId/:EpochId/Record" element={<Record />} />
 
-          <Route path="View" element={<View />} >
+          <Route path="HomePage/:id/SalonId/:SalonId/EpochId/:EpochId/View" element={<View />} >
             <Route path="V_BeakV" element={<V_BeakV />} />
             <Route path="V_EndCourse" element={<V_EndCourse />} />
             <Route path="V_LightClockV" element={<V_LightClockV />} />
@@ -69,7 +67,7 @@ function App() {
             <Route path="V_SeedV" element={<V_SeedV />} />
           </Route>
 
-          <Route path="NavO" element={<NavO />} >
+          <Route path="HomePage/:id/SalonId/:SalonId/EpochId/:EpochId/NavO" element={<NavO />} >
             <Route path="O_Beak" element={<O_Beak />} />
             <Route path="O_LightClock" element={<O_LightClock />} />
             <Route path="O_Ration" element={<O_Ration />} />
@@ -79,15 +77,18 @@ function App() {
         </Route>
 
         <Route path='/NavV' element={<NavV/>} >
-          <Route path="HomePageV" element={<HomePageV />} />
-          <Route path="OffersV" element={<OffersV />} >
+          <Route path="HomePageV/:id" element={<HomePageV />} />
+          <Route path="HomePageV/:id/userId/:userId" element={<Salons />} />
+          <Route path="HomePageV/:id/userId/:userId/salonId/:salonId" element={<Epoch />} />
+
+          <Route path="HomePageV/:id/userId/:userId/salonId/:salonId/EpochId/:EpochId/OffersV" element={<OffersV />} >
             <Route path="O_BeakV" element={<O_BeakV />} />
             <Route path="O_LightClockV" element={<O_LightClockV />} />
             <Route path="O_RationV" element={<O_RationV />} />
             <Route path="O_VaccinationV" element={<O_VaccinationV />} />
             <Route path="O_prescriptionV" element={<O_prescriptionV />} />
           </Route>
-          <Route path="ViewV" element={<ViewV />} >
+          <Route path="HomePageV/:id/userId/:userId/salonId/:salonId/EpochId/:EpochId/ViewV" element={<ViewV />} >
             <Route path="V_BeakV" element={<V_BeakV />} />
             <Route path="V_EndCourse" element={<V_EndCourse />} />
             <Route path="V_InfoV" element={<V_InfoV />} />
