@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { myContext } from '../../../context'
 import Fetch from '../../../components/Fetch'
-import { useNavigate, Link, useParams } from 'react-router-dom'
-import Cookies from "universal-cookie";
+import { useNavigate, Link } from 'react-router-dom'
 
 const InfoSalon = ({setshow2, EpochId }) => {
+  const {epoch,setepoch} = useContext(myContext)
   const [data,setdata] = useState('')
   const [update,setupdate] = useState(false)
-  const cookies = new Cookies()
-  const epoch_id = cookies.get('epoch_id')
   const navigate =useNavigate()
-  const params = useParams()
   const param = `EpochId/${EpochId}`
   useEffect(()=>{
     setupdate(!update)
@@ -19,10 +17,12 @@ const InfoSalon = ({setshow2, EpochId }) => {
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/epochs/detail/?epoch_id=${epoch_id}`
+    const api=`/api/v1/epochs/detail/?epoch_id=${EpochId}`
     Fetch(body,token,setdata,method,api,navigate)
   },[update])
 
+  if (data !== ''){setepoch(data)}
+    
   function ok(){
     if(window.confirm(' آیا از این کار اطمینان دارید این عمل غیر قابل بازگشت است')){alert('ok')}
   }
@@ -44,20 +44,20 @@ return (
           <h4 className="mt-2"> مکان سالن :</h4>
         </div>
         <div dir='ltr' className="">
-          <p className="mt-2">fgf</p>
-          <p className="mt-2">htrh</p>
+          <p className="mt-2">{data.salon_name}</p>
+          <p className="mt-2">{data.herd_breed} </p>
           <p className="mt-2">{data.parent_herd_name} </p>
           <p className="mt-2">{data.hen_type}</p>
           <p className="mt-2">{data.current_hen_count} </p>
           <p className="mt-2">{data.herd_age} </p>
-          <p className="mt-2">tfhf</p>
+          <p className="mt-2">{data.location} </p>
         </div>
       </div>
       <div className="flex justify-center mt-7 ">
-        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/View`}> نمایش اطلاعات </Link>
-        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/Record`}> اطلاعات ثبت </Link>
-        <Link className=' mx-4 bold underline underline-offset-8 text-black' to={`${param}/NavO`}> پیشنهادات </Link>
-        <button onClick={ok} className='mx-4 bold underline underline-offset-8 text-black'> اتمام دوره پرورش </button>
+        <Link className='info_btn text-black' to={`${param}/View`}> نمایش اطلاعات </Link>
+        <Link className={data.is_active?'info_btn text-black':'hidden'} to={`${param}/Record`}> ثبت اطلاعات  </Link>
+        <Link className='info_btn text-black' to={`${param}/NavO`}> پیشنهادات </Link>
+        <button className={data.is_active?'info_btn text-red-500':'hidden'} onClick={ok}> اتمام دوره پرورش </button>
       </div>
     </div>
   </div>

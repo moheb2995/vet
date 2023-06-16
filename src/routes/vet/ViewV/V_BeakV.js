@@ -15,15 +15,17 @@ const V_BeakV = () => {
   },[])
 
 return (
-<div className="flex justify-center flex-col text-center">
-  {data.map(i => 
-    <div className="border-2 rounded-3xl m-2 p-5 md:px-16 px-4 max-w-[700px] ">
-      <h2 className="text-lg text-orange-500"> {i.herd_age} روزگی </h2>
-      <h2 className="">
-      نوک چینی در تاریخ <span className='mx-1' dir='ltr'>{i.date}</span> انجام شد 
-      </h2>
-    </div>
-  )}
+<div className="center">
+  <div className="flex flex-col text-center">
+    {data.map(i => 
+      <div className="border-2 rounded-3xl m-2 p-5 md:px-24 px-4 max-w-[700px] ">
+        {/* <h2 className="text-lg text-orange-500"> {i.herd_age} روزگی </h2> */}
+        <h2 className="">
+        نوک چینی در تاریخ <span className='mx-1' dir='ltr'>{i.date}</span> انجام شد 
+        </h2>
+      </div>
+    )}
+  </div>
 </div>
 )}
 export default V_BeakV

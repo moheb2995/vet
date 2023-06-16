@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
+import { myContext } from '../../context'
 
 const Epoch = () => {
+  const {epoch,setepoch} = useContext(myContext)
   const [data,setdata] = useState([])
   const navigate =useNavigate()
   const id = useParams().salonId
-console.log('salonId',id);
 
   useEffect(()=>{
     const body=undefined

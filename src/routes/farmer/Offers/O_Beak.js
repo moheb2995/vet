@@ -17,10 +17,16 @@ const O_Beak = () => {
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 
+if(data.length === 0)return <h1 className="text-center text-xl italic">پیشنهادی وجود ندارد</h1>
 return (
 <div className="flex justify-center flex-col text-center">
   {data.map(i =>
     <div className="border-2 rounded-xl xl:w-[30vw] w-[40vw] m-4 p-3.5 px-7 max-w-[800px] mx-auto ">
+      {/* <div className="flex justify-end -mt-7 ">
+        <div className="border-2 rounded-full text-sm text-slate-600 px-4 pt-0.5 w-min">
+          {i.status}
+        </div>
+      </div> */}
       <div className="mb-4 grid grid-cols-2">
         <div>
           <h4 className="my-2">تاریخ</h4>
@@ -32,7 +38,7 @@ return (
         </div>
       </div>
       <div className="flex justify-between -mb-[30px] ">
-        <div className="border-2 rounded-full text-sm bg-white px-4 pt-0.5 "> تاریخ ثبت {'1402/01/23'} </div>
+        <div className="border-2 rounded-full text-sm bg-white px-4 pt-0.5 "> تاریخ ثبت {'1402/01/23'}</div>
         <div className="">
           <button className='btn-r w-5 rounded-full box-content	 border-2 mx-1'>×</button>
           <button className='btn-g w-5 rounded-full box-content	 border-2'>✓</button>

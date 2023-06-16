@@ -1,18 +1,20 @@
 import React, { useState  } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../../components/Fetch'
-import Cookies from "universal-cookie";
+import DatePickerV from '../../../../components/DatePickerV';
 
 const R_BeakV = ({setshow}) => {
-  const [date,setdate] = useState('2023-10-10')
+  const [date,setdate] = useState('')
+  const [value,setvalue] = useState('')
   const [data,setdata] = useState([])
   const location = useLocation().pathname
   const navigate =useNavigate()
-  const cookies = new Cookies()
-  const epoch_id = cookies.get('epoch_id')
+  const EpochId = useParams().EpochId
+  const params = useParams()
+  const param = `/NavV/HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}/OffersV`
 
   const save =async()=>{
-    const body={ epoch_id, herd_age:45, date}
+    const body={ epoch_id:EpochId, herd_age:45, date}
     const token=true
     const method='POST'
     const api=`/api/v1/beak-trimming/`
@@ -20,10 +22,10 @@ const R_BeakV = ({setshow}) => {
   }
   
 return (
-<div className={location == '/NavV/OffersV/O_BeakV'?'':'hidden'}>
-  <div >
+<div className={location == `${param}/O_BeakV`?'':'hidden'}>
+  <div className='flex'>
     در تاریخ
-    <input className='mx-2 text-center' dir='ltr' value={date} onChange={e => setdate(e.target.value)} />
+    <DatePickerV setdate={setdate} value={value} setvalue={setvalue} />
     نوک چینی را انجام دهید
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">

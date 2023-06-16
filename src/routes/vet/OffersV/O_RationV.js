@@ -6,9 +6,9 @@ return (
   <table className='text-center w-4/5 shadow-md '>
     <thead>
       <tr className="">
-        <th className="th_Ration bg-green-400 bg-yellow-300"> نوع جیره </th>
-        <th className="th_Ration bg-green-400 bg-yellow-300"> مقدار </th>
-        <th className="th_Ration bg-green-400 bg-yellow-300"> واحد </th>
+        <th className="th_Ration "> نوع جیره </th>
+        <th className="th_Ration "> مقدار </th>
+        <th className="th_Ration "> وضعیت </th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@ return (
         <td className="t_Ration">fgbfg</td>
       </tr>
     </tbody>
-    <tfoot className='text-center '>
+    <tfoot className='text-center border'>
       <td>  تاریخ ثبت {'1402/01/23'} </td>
       <td></td>
       <td>jhnchgn</td>

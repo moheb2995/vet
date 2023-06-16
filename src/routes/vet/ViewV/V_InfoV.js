@@ -4,10 +4,10 @@ const V_InfoV = () => {
 
 
 return (
-<div className="center ">
-  <div className="p-8 px-14 ">
+<div className="center mt-1 ">
+  <div className="p-8 px-0 ">
     <h1 className="text-3xl mx-28 mb-8 "> مشخصات سالن و دوره پرورش </h1>
-    <div className="center gap-40">
+    <div className="center gap-40 ">
       <div className="">
         <h4 className="mt-2"> نام سالن :</h4>
         <h4 className="mt-2"> نژاد گله :</h4>

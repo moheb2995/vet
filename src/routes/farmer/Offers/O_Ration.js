@@ -10,7 +10,7 @@ return (
       <thead>
         <th className="th_Ration"> نوع جیره </th>
         <th className="th_Ration"> مقدار </th>
-        <th className="th_Ration"> واحد </th>
+        <th className="th_Ration"> وضعیت </th>
       </thead>
       <tbody>
         <tr>

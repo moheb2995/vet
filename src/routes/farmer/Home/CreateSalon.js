@@ -6,10 +6,9 @@ const CreateSalon = ({setshow, id}) => {
   const [date,setdate] = useState('2023-6-2')
   const [type,settype] = useState('LAYING')
   const [race,setrace] = useState('something')
-  const [age,setage] = useState('')
   const [name,setname] = useState('somthing')
 
-  const [started,setstarted] = useState(null)
+  const [started,setstarted] = useState(undefined)
   const [firstNum,setfirstNum] = useState('950000')
   const [lastNum,setlastNum] = useState('950000')
 
@@ -21,7 +20,6 @@ const CreateSalon = ({setshow, id}) => {
       salon:id,
       hen_type:type,
       herd_breed:race,
-      // age:age, //number
       parent_herd_name:name,
       initial_hen_count:firstNum ,
       start_date:date, // 2023-4-2
@@ -29,7 +27,6 @@ const CreateSalon = ({setshow, id}) => {
       salon:id,
       hen_type:type,
       herd_breed:race,
-      // age:age, //number
       parent_herd_name:name,
       initial_hen_count:firstNum,
       start_date:date, // 2023-4-2
@@ -51,35 +48,35 @@ return (
         <div className="w-20">
           <h4 className="mt-1"> نوع مرغ </h4>
           <h4 className="mt-8"> نژاد گله </h4>
-          <h4 className="mt-7"> سن گله </h4>
           <h4 className="mt-7"> نام گله مادر </h4>
         </div>
-        <div className="">
-          <input className="" value={type} onChange={e => settype(e.target.value)} /> <br/>
+        <div>
+          <select className="" onChange={e => settype(e.target.value)}> 
+            <option value="LAYING">مرغ تخمگذار </option>
+            <option value="BROILER">مرغ گوشتی </option>
+          </select><br />
           <input className="mt-5" value={race} onChange={e => setrace(e.target.value)} /> <br/>
-          <input className="mt-5" value={age} onChange={e => setage(e.target.value)} type='number' /> <br/>
           <input className="mt-5" value={name} onChange={e => setname(e.target.value)} /> <br/>
         </div>
       </div>
-
       <div className="flex mt-5">
         <h5 className=""> آیا پرورش سالن را از امروز شروع کرده اید ؟ </h5>
         <label htmlFor='1' className='mr-4' >بله</label>
-        <input id='1' type="checkbox" value={true} onChange={e => setstarted(e.target.defaultValue)}/>
+        <input id='1' type="radio" value={true} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'true'} />
 
         <label htmlFor='2' className='mr-4' >خیر</label>
-        <input id='2' type="checkbox" value={false} onChange={e => setstarted(e.target.defaultValue)}/>
+        <input id='2' type="radio" value={false} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'false'}/>
       </div>
-      <div className="mt-8 flex justify-between items-center">
-        <div className="">
-          <h5 className="inline-block ">  تاریخ شروع پرورش : </h5><br />
-          <h5 className="inline-block my-4 ">تعداد کل پرنده در روز اول: </h5><br />
-          <h5 className="inline-block ">تعداد کل پرنده در حال حاضر:</h5><br />
+      <div className={started?"mt-8 flex justify-between items-center":'hidden'}>
+        <div className=" ">
+          <h5 className={started == 'true'?"":'hidden'}>  تاریخ شروع پرورش : </h5>
+          <h5 className={started == 'true'?"my-4":'hidden'}>تعداد کل پرنده در روز اول: </h5>
+          <h5 className="inline-block ">تعداد کل پرنده در حال حاضر:</h5>
         </div>
-        <div className="">
-          <input className='w-28 my-0.5 ' value={date} onChange={e => setdate(e.target.value)} /> <br />
-          <input className='w-28 my-0.5 ' type="number" value={firstNum} onChange={e => setfirstNum(e.target.value)} /> <br />
-          <input className='w-28 my-0.5 ' type="number" value={lastNum} onChange={e => setlastNum(e.target.value)} /> <br />
+        <div className=" ">
+          <input className={started == 'true'?"w-28 my-0.5 block ":'hidden'} value={date} onChange={e => setdate(e.target.value)} /> 
+          <input className={started == 'true'?"w-28 my-0.5 block ":'hidden'} type="number" value={firstNum} onChange={e => setfirstNum(e.target.value)} /> 
+          <input className='w-28 my-0.5 block ' type="number" value={lastNum} onChange={e => setlastNum(e.target.value)} /> 
         </div>
       </div>
 

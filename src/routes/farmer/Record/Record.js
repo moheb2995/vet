@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { myContext } from '../../../context'
+
 import LightClock from './LightClock'
 import Loss from './Loss'
 import NumberEgg from './NumberEgg'
@@ -10,13 +12,14 @@ import WeightEgg from './WeightEgg'
 import Beak from './Beak'
 
 const Record = () => {
+  const {epoch,setepoch} = useContext(myContext)
 
 return (
 <div className=''>
   <Loss />
   <Vaccination />
 
-  <div className="">
+  <div className={epoch === "BROILER"?"":'hidden'}>
     <NumberEgg />
     <WeightEgg />
   </div>

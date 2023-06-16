@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../../components/Fetch'
-import Cookies from "universal-cookie";
 import HerdAge from '../../../../components/HerdAge';
+import DatePickerV from '../../../../components/DatePickerV';
 
 const R_BeakV = ({setshow}) => {
   const [date,setdate] = useState('2023-10-10')
   const [data,setdata] = useState([])
+  const [value,setvalue] = useState('')
   const [herd_age, setherd_age] = useState('')
   const [use, setuse] = useState('EYE_DROP')
   const [name, setname] = useState('NEWCASTLE')
 
   const location = useLocation().pathname
   const navigate =useNavigate()
-  const cookies = new Cookies()
-  const epoch_id = cookies.get('epoch_id')
+  const EpochId = useParams().EpochId
+  const params = useParams()
+  const param = `/NavV/HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}/OffersV`
 
   useEffect(()=>{
     HerdAge(setherd_age)
   },[])
 
   const save =async()=>{
-    const body={ epoch_id, herd_age, date, name, how_to_use:use }
+    const body={ epoch_id:EpochId, herd_age, date, name, how_to_use:use }
     const token=true
     const method='POST'
     const api=`/api/v1/vaccination/suggestions/`
@@ -29,7 +31,7 @@ const R_BeakV = ({setshow}) => {
   }
   
 return (
-<div className={location == '/NavV/OffersV/O_VaccinationV'? "":'hidden'}>
+<div className={location == `${param}/O_VaccinationV`? "":'hidden'}>
   <div className='grid grid-cols-3 text-center gap-4'>
     <h5 className="h-min -m-2">نام واکسن</h5>
     <h5 className="h-min -m-2">طریقه مصرف</h5>
@@ -40,7 +42,7 @@ return (
       <select className='h-min' onChange={e=>setuse(e.target.value)}>
         <option value="EYE_DROP">EYE_DROP</option>
       </select>
-    <input className='h-min ' value={date} onChange={e => setdate(e.target.value)} />
+    <DatePickerV setdate={setdate} value={value} setvalue={setvalue} />
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>

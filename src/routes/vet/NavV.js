@@ -21,8 +21,9 @@ return (
 <>
   <div className='bg-[#6FFFF1] flex justify-between items-center p-2'>
     <div className="flex items-center">
-      <img src="/img/download (1).jfif" alt="" className="rounded-full w-16 h-14 mx-2" />
-      <h2 className="bold">{data.first_name} {data.last_name} </h2>
+    <Link className='nav text-slate-700 bold bg-slate-50 rounded' to={`/NavV/HomePageV/${id}`}>
+      <img src="/img/home button.png" alt="" className="w-36 " />
+    </Link>
       <nav className={params.EpochId?"mx-6":'hidden'}>
         <NavLink 
           className={({isActive}) => isActive? 'nav text-slate-700 bold bg-slate-50 rounded':'nav'} 
@@ -36,9 +37,10 @@ return (
         </NavLink>
       </nav>
     </div>
-    <Link className='nav text-slate-700 bold bg-slate-50 rounded' to={`/NavV/HomePageV/${id}`}>
-      <img src="/img/home button.png" alt="" className="w-36 " />
-    </Link>
+    <div className="flex flex-col mx-4 ">
+      <img src="/img/download (1).jfif" alt="" className="rounded-full w-12 h-10 mx-auto " />
+      <h2 className="bold text-sm">{data.first_name} {data.last_name} </h2>
+    </div>
   </div>
 
   <div className="px-10 py-6"><Outlet/></div>

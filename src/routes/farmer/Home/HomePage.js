@@ -32,11 +32,18 @@ const HomePage = () => {
 return (
 <div className="">
   <div className=' flex'>
-    <div className="border-l w-96 min-h-[90vh] ">
-      <button className='text-[#142aec] bold border-[1.5px] border-[#3849e0] p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن سالن </button>
+    <div className="border-l border-slate-400 w-96 min-h-[90vh] ">
+      <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن سالن </button>
       {
         data.length > 0?
-        data.map(i =><Link key={i.id} to={`SalonID/${i.id}`}><h4 className="border w-ful rounded-lg p-1 px-4 ml-5 mt-4">{i.name} </h4></Link>)
+        data.map(i =><Link key={i.id} to={`SalonID/${i.id}`} >
+          <div className="rounded-lg p-4 px-7 ml-5 mt-4 grid grid-cols-2 text-center gap-2 bg-slate-200" >
+            <h4 className=""> نام سالن:</h4>
+            <h4 className=""> {i.name} </h4>
+            <h4 className="">مکان سالن:</h4>
+            <h4 className="">{i.location} </h4>
+          </div>
+        </Link>)
         :''
       }
     </div>
