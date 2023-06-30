@@ -1,32 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 
 const V_LightClockV = () => {
-  const [data,setdata] = useState([
-    {
-        "id": "2c3e21ce-6702-4934-a0bd-17d19ceca06f",
-        "date": "2023-06-07",
-        "total_lighting_hours": "07:29:00",
-        "light_color": "blue",
-        "light_intensity": 12,
-        "herd_age": 37,
-        lighting_hours: [
-            {
-                "start_time": "06:00:00",
-                "end_time": "07:30:00"
-            },
-            {
-                "start_time": "12:10:00",
-                "end_time": "14:55:00"
-            },
-            {
-                "start_time": "16:46:00",
-                "end_time": "20:00:00"
-            }
-        ]
-    }
-])
+  const [data,setdata] = useState([])
   const navigate =useNavigate()
   const id = useParams().EpochId
 
@@ -35,9 +13,10 @@ const V_LightClockV = () => {
     const token=true
     const method='GET'
     const api=`/api/v1/lighting/?epoch_id=${id}`
-    // Fetch(body,token,setdata,method,api,navigate)
+    Fetch(body,token,setdata,method,api,navigate)
   },[])
 
+if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
 <div className="flex justify-center text-center">
   {data.map(i=>
@@ -48,7 +27,7 @@ return (
         <h5 className="my-2 border-l border-[#707070]">شدت نور</h5>
         <h5 className="my-2 border-l border-[#707070]">ساعات</h5>
         <h5 className="my-2 "> کل مدت  </h5>
-        <h6 className="">{i.date} </h6>
+        <h6 className="">{Gregorian_to_jalali(i.date)} </h6>
         <h6 className="">{i.light_color} </h6>
         <h6 className="">{i.light_intensity} </h6>
         {/* <select name="" id="">

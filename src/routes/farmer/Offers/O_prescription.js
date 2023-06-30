@@ -1,9 +1,11 @@
 import React from 'react'
 
 const O_prescription = () => {
-  return (
-    <div>O_prescription</div>
-  )
-}
 
+
+return (
+<div>
+  <h1 className='text'> هنوز نسخه ای ثبت نشده</h1>
+</div>
+)}
 export default O_prescription

@@ -35,22 +35,10 @@ const Weight = () => {
   },[])
 
   function putOff(){
-    setbeginning([])
-    for(var i=0; i <= 24; i++) {
-      beginning.push('')
-      setbeginning(beginning)
-    }
-    setmiddle([])
-    for(var i=0; i <= 24; i++) {
-      middle.push('')
-      setmiddle(middle)
-    }
-    setend([])
-    for(var i=0; i <= 24; i++) {
-      end.push('')
-      setend(end)
-    }
-    setdate('');setvalue()
+    beginning.map((i,inx)=> {beginning[inx] = ''; setupdate(!update); setbeginning(beginning)})
+    middle.map((i,inx)=> {middle[inx] = ''; setupdate(!update); setmiddle(middle)})
+    end.map((i,inx)=> {end[inx] = ''; setupdate(!update); setend(end)})
+    setdate('');setvalue('');setupdate(!update)
   }
 
   useEffect(()=>{

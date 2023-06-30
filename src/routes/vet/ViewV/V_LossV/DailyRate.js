@@ -39,7 +39,7 @@ const DailyRate = ({id, navigate}) => {
     plugins: {
       title: {
         display: true,
-        text: 'Chart.js Bar Chart - Stacked'
+        text: 'سن-درصد تلفات'
       },
     },
     responsive: true,

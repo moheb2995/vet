@@ -3,56 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 
 const V_RationV = () => {
-  const [data,setdata] = useState([
-    {
-    "id": "defd4bbb-91a7-4f6a-b7f8-b94db34a33df",
-    "date": "2023-05-26",
-    "data": [
-        {
-            "name": "SOYBEAN_MEAL",
-            "amount": 50.5
-        },
-        {
-            "name": "PEANUT_MEAL",
-            "amount": 20.777
-        },
-        {
-            "name": "MILO",
-            "amount": 9999.0
-        },
-        {
-            "name": "LYSINE",
-            "amount": 60
-        }
-    ],
-    "total_weight": "10130.277",
-    "herd_age": 25
-}
-,    {
-  "id": "defd4bbb-91a7-4f6a-b7f8-b94db34a33df",
-  "date": "2023-05-26",
-  "data": [
-      {
-          "name": "SOYBEAN_MEAL",
-          "amount": 50.5
-      },
-      {
-          "name": "PEANUT_MEAL",
-          "amount": 20.777
-      },
-      {
-          "name": "MILO",
-          "amount": 9999.0
-      },
-      {
-          "name": "LYSINE",
-          "amount": 60
-      }
-  ],
-  "total_weight": "10130.277",
-  "herd_age": 25
-}
-])
+  const [data,setdata] = useState([])
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
   
@@ -61,9 +12,10 @@ const V_RationV = () => {
     const token=true
     const method='GET'
     const api=`/api/v1/vaccination/?epoch_id=${epoch_id}`
-    // Fetch(body,token,setdata,method,api,navigate)
+    Fetch(body,token,setdata,method,api,navigate)
   },[])
-if(data.length === 0)return '...loading'
+  
+if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
 <div className='center mt-4'>
   <table className='text-center w-3/5 '>

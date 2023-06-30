@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 
 const V_VaccinationV = () => {
   const [data,setdata] = useState([])
@@ -14,7 +15,8 @@ const V_VaccinationV = () => {
     const api=`/api/v1/vaccination/?epoch_id=${epoch_id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
-
+  
+if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
 <div className="flex justify-center">
   <div className="flex justify-center flex-col text-center">
@@ -28,7 +30,7 @@ return (
           <h6 className="px-1">{i.name} </h6>
           <h6 className="px-1">{i.how_to_use} </h6>
           <h6 className="px-1">{i.herd_age} </h6>
-          <h6 className="px-1">{i.date} </h6>
+          <h6 className="px-1">{Gregorian_to_jalali(i.date)} </h6>
         </div>
       </div>
     )}

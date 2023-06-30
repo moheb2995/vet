@@ -10,6 +10,7 @@ const V_LossV = () => {
 return (
 <div className=' '>
   <DailyCount id={id} navigate={navigate} />
+  <br />
   <DailyRate id={id} navigate={navigate} />
 </div>
 )}

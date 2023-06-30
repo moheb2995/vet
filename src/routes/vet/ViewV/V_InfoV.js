@@ -2,7 +2,7 @@ import React from 'react'
 
 const V_InfoV = () => {
 
-
+// if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
 <div className="center mt-1 ">
   <div className="p-8 px-0 ">

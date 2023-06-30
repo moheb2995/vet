@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 const CreateSalon = ({ setshow, id, setadd, add }) => {
   const [date,setdate] = useState('')
   const [value,setvalue] = useState('')
-  const [type,settype] = useState('LAYING')
-  const [race,setrace] = useState('something')
-  const [name,setname] = useState('somthing')
+  const [type,settype] = useState('')
+  const [race,setrace] = useState('')
+  const [name,setname] = useState('')
 
   const [started,setstarted] = useState()
-  const [firstNum,setfirstNum] = useState('1000000')
-  const [lastNum,setlastNum] = useState('950000')
+  const [firstNum,setfirstNum] = useState('')
+  const [lastNum,setlastNum] = useState('')
 
   const [data,setdata] = useState([])
   const navigate =useNavigate()
@@ -54,7 +54,8 @@ return (
         </div>
         <div>
           <select className="" onChange={e => settype(e.target.value)}> 
-            <option value="LAYING">مرغ تخمگذار </option>
+          <option value=""> </option>
+          <option value="LAYING">مرغ تخمگذار </option>
             <option value="BROILER">مرغ گوشتی </option>
           </select><br />
           <input className="my-3" value={race} onChange={e => setrace(e.target.value)} /> <br/>
@@ -64,10 +65,10 @@ return (
       <div className="flex mt-5">
         <h5 className=""> آیا پرورش سالن را از امروز شروع کرده اید ؟ </h5>
         <label htmlFor='1' className='mr-4' >بله</label>
-        <input id='1' type="radio" value={true} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'true'} />
+        <input id='1' type="radio" value={false} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'false'} />
 
         <label htmlFor='2' className='mr-4' >خیر</label>
-        <input id='2' type="radio" value={false} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'false'}/>
+        <input id='2' type="radio" value={true} onChange={e => setstarted(e.target.defaultValue)} checked={started == 'true'}/>
       </div>
       <div className={started?"mt-8 flex justify-between items-center":'hidden'}>
         <div className=" ">
@@ -75,8 +76,8 @@ return (
           <h5 className={started == 'true'?"mt-5":'hidden'}>تعداد کل پرنده در روز اول: </h5>
           <h5 className="inline-block mt-5">تعداد کل پرنده در حال حاضر:</h5>
         </div>
-        <div className="-ml-2">
-          <DatePickerF setdate={setdate} value={value} setvalue={setvalue} />
+        <div className="-ml-">
+          <div className="mx-2"><DatePickerF setdate={setdate} value={value} setvalue={setvalue} /></div>
           <input className={started == 'true'?"mt-3 mx-2 block ":'hidden'} type="number" value={firstNum} onChange={e => setfirstNum(e.target.value)} /> 
           <input className='my-0.5 block mx-2 mt-3' type="number" value={lastNum} onChange={e => setlastNum(e.target.value)} /> 
         </div>

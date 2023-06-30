@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 
 const O_BeakV = () => {
   const [data,setdata] = useState([])
@@ -14,6 +15,7 @@ const O_BeakV = () => {
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 
+if(data.length === 0)return <h1 className="text"> پیشنهادی هنوز ثبت نشده</h1>
 return (
 <div className="flex justify-center text-center">
   <div className="flex flex-col">
@@ -21,7 +23,7 @@ return (
     <div key={i.id} className="border-2 rounded-3xl m-2 p-5 md:px-16 px-4 max-w-[700px] ">
       <h2 className="text-lg text-orange-500"> {i.herd_age} روزگی </h2>
       <h2 className="">
-        نوک چینی در تاریخ {i.suggested_at}
+        نوک چینی در تاریخ {Gregorian_to_jalali(i.suggested_at)}
         <span className={i.status ==='DONE'?'text-green-500 bold':'hidden'}> انجام شد </span>
         <span className={i.status === 'REJECTED'?'text-red-600 bold':'hidden'}> انجام نشد </span>
         <span className={i.status === 'PENDING'?'text-slate-500 bold':'hidden'}> در انتظار انجام است </span>

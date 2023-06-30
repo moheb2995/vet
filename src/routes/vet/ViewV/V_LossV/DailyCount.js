@@ -37,7 +37,7 @@ const DailyCount = ({id, navigate}) => {
         data: data.cutoff_list,
         backgroundColor: [
           // 'rgba(111 255 241)',
-          'rgba(115 155 244)',
+          'rgba(220 89 45)',
         ],
         borderColor: [
           'rgb(111 255 241)',
@@ -51,7 +51,7 @@ const DailyCount = ({id, navigate}) => {
     plugins: {
       title: {
         display: true,
-        text: 'Chart.js Bar Chart - Stacked'
+        text: 'سن-تعداد تلفات'
       },
     },
     responsive: true,

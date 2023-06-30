@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import Fetch from '../../../components/Fetch'
 import { useNavigate, Link, useParams } from "react-router-dom";
+import Chart from 'chart.js/auto';
+import { Bar } from 'react-chartjs-2';
 
 const HomePage = () => {
   const [show,setshow] = useState(false)
@@ -11,7 +13,6 @@ const HomePage = () => {
   const [add,setadd] = useState(0)
   const navigate =useNavigate()
   const id = useParams().id
-  console.log(id);
 
   useEffect(()=>{
     const body=undefined
@@ -33,11 +34,40 @@ const HomePage = () => {
       console.log(add);
     }, 1000);
   }
+
   
-  if(data.length === 0)return <h1>loading...</h1>
+  const chart ={
+    labels : [],
+    datasets: [
+      {
+        label: '',
+        data: [],
+        // data: {count:50, min: -100, 10: 100},
+        backgroundColor: [
+          'rgba(111 255 241)',
+          // 'rgba(115 155 244)',
+        ],
+        borderColor: [
+          'rgb(111 255 241)',
+        ],
+        borderWidth: 1,
+        // borderSkipped:'bottom',
+
+        // base:10
+        // barPercentage: 1.3 // فاصله ستون ها
+        // barThickness: 75, // ضخامت ستون ها
+        // inflateAmount:10, // ضخامت ستون ها
+        // grouped:false
+        hoverBackgroundColor:['rgba(111 25 241)'],
+        hoverBorderWidth:0,
+        // indexAxis:'y'
+      },
+    ]
+  }
+  
 return (
 <div className="">
-  <div className=' flex'>
+  <div className=' flex justify-between'>
     <div className="border-l border-slate-400 w-96 min-h-[90vh] ">
       <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن سالن </button>
       {
@@ -50,8 +80,14 @@ return (
             <h4 className="">{i.location} </h4>
           </div>
         </Link>)
-        :''
+        :<h2 className='my-3 text-lg '>سالنی برای نمایش وجود ندارد</h2>
       }
+    </div>
+    {/* 2 */}
+    <div className="w-[60%] ">
+      <Bar data={chart} />
+      <br />
+      <Bar data={chart} />
     </div>
   </div>
   {/* modul */}

@@ -1,46 +1,10 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 
 const O_VaccinationV = () => {
-  const [data,setdata] = useState([
-    {
-        "id": "cc1268ab-9b3e-4a82-9988-a532c84100cd",
-        "date": "2023-06-16",
-        "suggested_at": "2023-05-14",
-        "": "PENDING",
-        "herd_age": 46,
-        "name": "MAREK",
-        "how_to_use": "SPRAY"
-    },
-    {
-        "id": "bfdf359d-377e-49e4-ac2d-e78442dce383",
-        "date": "2023-06-16",
-        "suggested_at": "2023-05-13",
-        "status": "PENDING",
-        "herd_age": 46,
-        "name": "MAREK",
-        "how_to_use": "SPRAY"
-    },
-    {
-        "id": "08094d7c-e91f-4e22-8eaa-0f817017f6f8",
-        "date": "2023-06-15",
-        "suggested_at": "2023-05-13",
-        "status": "PENDING",
-        "herd_age": 45,
-        "name": "MAREK",
-        "how_to_use": "SPRAY"
-    },
-    {
-        "id": "ecb634e2-b16e-4acd-93e0-b2772c803b38",
-        "date": "2023-06-15",
-        "suggested_at": "2023-05-12",
-        "status": "PENDING",
-        "herd_age": 45,
-        "name": "MAREK",
-        "how_to_use": "SPRAY"
-    }
-])
+  const [data,setdata] = useState([])
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
   
@@ -49,9 +13,10 @@ const O_VaccinationV = () => {
     const token=true
     const method='GET'
     const api=`/api/v1/vaccination/suggestions/?epoch_id=${epoch_id}`
-    // Fetch(body,token,setdata,method,api,navigate)
+    Fetch(body,token,setdata,method,api,navigate)
   },[])
-
+  
+if(data.length === 0)return <h1 className="text"> پیشنهادی هنوز ثبت نشده</h1>
 return (
 <div className="flex justify-center">
   <div className="flex flex-col text-center">
@@ -66,11 +31,11 @@ return (
         <h6 className="">{i.name} </h6>
         <h6 className="">{i.how_to_use} </h6>
         <h6 className="">{i.herd_age} </h6>
-        <h6 className="">{i.date} </h6>
+        <h6 className="">{Gregorian_to_jalali(i.suggested_at)} </h6>
         <p className="">{i.status == 'PENDING'?'در انتظار':i.status == 'DONE'?'انجام شده':'پذیرفته نشده'} </p>
       </div>
       <div className="flex -mb-[34px] ">
-        <div className="border-2 rounded-full text-sm bg-white px-4 pt-0.5 -mr-5 ">  تاریخ ثبت {'1402/01/23'} </div>
+        <div className="border-2 rounded-full text-sm bg-white px-4 pt-0.5 -mr-5 ">  تاریخ ثبت {Gregorian_to_jalali(i.date)} </div>
       </div>
     </div>
     )}

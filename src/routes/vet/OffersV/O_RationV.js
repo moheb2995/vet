@@ -1,6 +1,8 @@
 import React from 'react'
 
 const O_RationV = () => {
+
+// if(data.length === 0)return <h1 className="text"> پیشنهادی هنوز ثبت نشده</h1>
 return (
 <div className='center'>
   <table className='text-center w-4/5 shadow-md '>

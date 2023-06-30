@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
-// import { myContext } from '../../../context'
 import { useParams, useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 import InfoSalon from './InfoSalon'
 import CreateSalon from './CreateSalon'
 import { Cookies } from 'react-cookie'
-
+import Chart from 'chart.js/auto';
+import { Bar } from 'react-chartjs-2';
 
 const Salon = () => {
   const [show,setshow] = useState(false)
@@ -30,15 +31,34 @@ const Salon = () => {
     const api=`/api/v1/epochs/?salon_id=${_id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[update,add])
-  console.log(add);
-  
+
+  const chart ={
+    labels : [],
+    datasets: [
+      {
+        label: '',
+        data: [],
+        backgroundColor: [
+          'rgba(111 255 241)',
+        ],
+        borderColor: [
+          'rgb(111 255 241)',
+        ],
+        borderWidth: 1,
+        hoverBackgroundColor:['rgba(111 25 241)'],
+        hoverBorderWidth:0,
+      },
+    ]
+  }
+
 return (
 <div className="">
-  <div className=' flex'>
+
+  <div className='flex justify-around '>
     <div className="border-l border-slate-400 w-96 min-h-[90vh] ">
       <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن دوره پرورش </button> <br />
       {
-        data.length === 0 ? '':
+        data.length === 0 ? <h2 className="text-lg my-3">هنوز دوره پرورشی وجود ندارد</h2>:
         data.map(i => <button key={i.id}
         className={i.is_active?'card2':"card2 opacity-70" }
         onClick={()=>{setshow2(true);setEpochId(i.id);cookie.remove('start_date');cookie.remove('epoch_id');cookie.set('start_date',i.start_date);cookie.set('epoch_id',i.id)}}>
@@ -48,14 +68,20 @@ return (
           <h5 className=""> نوع مرغ : </h5>
         </div>
         <div>
-          <h5 className="mb-1">{i.start_date} </h5>
+          <h5 className="mb-1">{gregorian_to_jalali(i.start_date)
+          } </h5>
           <h5 className="mb-1">{i.is_active?' در حال پرورش ':' اتمام دوره '} </h5>
           <h5 className="">{i.hen_type} </h5>
         </div>
       </button>
       )}
     </div>
-
+    {/* 2 */}
+    <div className="w-[60%] ">
+      <Bar data={chart} />
+      <br />
+      <Bar data={chart} />
+    </div>
   </div>
   {/* modul 1*/}
   {show ? <CreateSalon id={_id} setshow={setshow} setadd={setadd} add={add} /> : ''}

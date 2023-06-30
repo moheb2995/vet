@@ -23,6 +23,7 @@
   .card2 {@apply bg-slate-200 rounded-lg text-right p-4 px-7 ml-5 mt-4 text-sm w-80 grid grid-cols-2 gap-6}
   .info_btn {@apply mx-4 bold hover:underline underline-offset-8 }
   .ads_bar {@apply inline-block hover:text-blue-600 hover:font-medium }
+  .text {@apply text-center text-xl italic}
   /* . {@apply } */
 }
 

@@ -1,15 +1,11 @@
-import React, { useState ,useEffect } from 'react'
-import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 import R_BeakV from './OffersRecord/R_BeakV'
 import R_VaccinationV from './OffersRecord/R_VaccinationV'
 import R_LightClockV from './OffersRecord/R_LightClockV'
 
 const OffersV = () => {
   const [show,setshow] = useState(false)
-  const [file, setfile] = useState('')
-  const location = useLocation().pathname
-  const params = useParams()
-  const param = `/NavV/HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}/OffersV`
 
 return (
 <>
@@ -40,48 +36,13 @@ return (
         {/* واکسیناسیون */}
         <R_VaccinationV/>
         {/* جیره */}
-        <table className={location == `${param}/O_RationV`?'':'hidden'}>
-          <thead>
-            <tr className="">
-              <th className="th_Ration"> نوع جیره </th>
-              <th className="th_Ration"> مقدار </th>
-              <th className="th_Ration"> واحد </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="">
-              <td className="t_Ration">
-                <select >
 
-                </select>
-              </td>
-              <td className="t_Ration">
-                <input className='w-full ' type="number" />
-              </td>
-              <td className="t_Ration">
-                <select >
-
-                </select>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot className='text-center '>
-              <td></td>
-              <td><button className='text-4xl px-2'>+</button></td>
-          </tfoot>
-        </table>
         {/* ساعات روشنایی */}
         <R_LightClockV setshow={setshow}/>
         {/* نوک چینی */}
         <R_BeakV/>
         {/* نسخه */}
-        <div className={location == `${param}/O_prescriptionV`?'':'hidden'}>
-          <input className='hidden' type="file" id='O_prescriptionV' accept='image/*' onChange={e=>setfile(e.target.files[0])} />
-          <div className="border-2 border-dashed center items-center m-6 my-3">
-            <label className='inline-flex text-4xl p-4 px-8 ' htmlFor="O_prescriptionV"> انتخاب فایل</label>
-          </div>
-          <h6 className="mx-6 ">{file.name} </h6>
-        </div>
+
         {/*  */}
       </div>
     </div>
