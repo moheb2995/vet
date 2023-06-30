@@ -30,7 +30,7 @@ import V_BeakV from "./routes/vet/ViewV/V_BeakV";
 import V_EndCourse from "./routes/vet/ViewV/V_EndCourse";
 import V_InfoV from "./routes/vet/ViewV/V_InfoV";
 import V_LightClockV from "./routes/vet/ViewV/V_LightClockV";
-import V_LossV from "./routes/vet/ViewV/V_LossV";
+import V_LossV from "./routes/vet/ViewV/V_LossV/V_LossV";
 import V_NumberEggV from "./routes/vet/ViewV/V_NumberEggV";
 import V_RationV from "./routes/vet/ViewV/V_RationV";
 import V_VaccinationV from "./routes/vet/ViewV/V_VaccinationV";

@@ -1,19 +1,18 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
-import Cookies from "universal-cookie";
+import { myContext } from '../../../context'
 
 const O_Beak = () => {
   const [data,setdata] = useState([])
   const navigate =useNavigate()
-  const cookies = new Cookies()
-  const epoch_id = cookies.get('epoch_id')
+  const {epoch} = useContext(myContext)
 
   useEffect(()=>{
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/beak-trimming/suggestions/?epoch_id=${epoch_id}`
+    const api=`/api/v1/beak-trimming/suggestions/?epoch_id=${epoch.id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { myContext } from '../../../context'
+// import { myContext } from '../../../context'
 import { useParams, useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import InfoSalon from './InfoSalon'
 import CreateSalon from './CreateSalon'
+import { Cookies } from 'react-cookie'
+
 
 const Salon = () => {
   const [show,setshow] = useState(false)
@@ -11,12 +13,14 @@ const Salon = () => {
   const [data,setdata] = useState([])
   const [EpochId,setEpochId] = useState('')
   const [update,setupdate] = useState(false)
+  const [add, setadd] = useState(0)
   const navigate =useNavigate()
-  const params = useParams().id
   const _id = useParams().SalonId
+  const cookie = new Cookies()
 
   useEffect(()=>{
     setupdate(!update)
+
   },[])
 
   useEffect(()=>{
@@ -25,7 +29,8 @@ const Salon = () => {
     const method='GET'
     const api=`/api/v1/epochs/?salon_id=${_id}`
     Fetch(body,token,setdata,method,api,navigate)
-  },[update])
+  },[update,add])
+  console.log(add);
   
 return (
 <div className="">
@@ -36,7 +41,7 @@ return (
         data.length === 0 ? '':
         data.map(i => <button key={i.id}
         className={i.is_active?'card2':"card2 opacity-70" }
-        onClick={()=>{setshow2(true);setEpochId(i.id)}}>
+        onClick={()=>{setshow2(true);setEpochId(i.id);cookie.remove('start_date');cookie.remove('epoch_id');cookie.set('start_date',i.start_date);cookie.set('epoch_id',i.id)}}>
         <div>
           <h5 className="mb-1"> تاریخ آغاز دوره : </h5>
           <h5 className="mb-1"> تاریخ پایان دوره : </h5>
@@ -53,7 +58,7 @@ return (
 
   </div>
   {/* modul 1*/}
-  {show ? <CreateSalon id={params} setshow={setshow}/> : ''}
+  {show ? <CreateSalon id={_id} setshow={setshow} setadd={setadd} add={add} /> : ''}
   {/* modul 2*/}
   { show2 ? <InfoSalon EpochId={EpochId} setshow2={setshow2}/>: ''}
 </div>

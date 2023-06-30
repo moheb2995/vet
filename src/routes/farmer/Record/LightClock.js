@@ -1,7 +1,7 @@
 import React,{ useState,useEffect } from 'react'
 import Fetch from '../../../components/Fetch'
 import HerdAge from '../../../components/HerdAge';
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import DatePickerF from '../../../components/DatePickerF';
 
 const LightClock = () => {
@@ -10,15 +10,16 @@ const LightClock = () => {
   const [data,setdata] = useState([])
   const [herd_age, setherd_age] = useState('')
   const [date, setdate] = useState('')
+  const [value,setvalue] = useState('')
   const [light_intensity, setlight_intensity] = useState('')
   const [light_color, setlight_color] = useState('')
   const [hours, sethours] = useState([{start_time:'',end_time:''}])
-  const [value,setvalue] = useState('')
-  
+  const params = useParams()
+  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
+
   function putOff(){
     setvalue('');
     setdate('')
-    setshow(false)
     setlight_intensity('')
     setlight_color('')
     sethours([{start_time:'',end_time:''}])
@@ -48,7 +49,7 @@ return (
 <div className='mb-6'>
   <button onClick={()=> setshow(!show)} className='btn'> ساعات روشنایی </button>
   <div className={show?"flex ":'hidden'}>
-    <div className="btn-b"><button > مشاهده تاریخچه </button></div>
+    <div className="btn-b"><Link className='flex items-center' to={`${param}/V_LightClockV`}> مشاهده تاریخچه </Link></div>
     <div className="card1 flex-wrap">
       <div className="grid grid-cols-3 text-center gap-4 mx-auto ">
         <h5 className="-m-2">رنگ نور</h5>
@@ -71,7 +72,7 @@ return (
       </div>
       <div className="flex justify-end w-full">
         <button className='btn-r mx-2' onClick={putOff}>انصراف</button>
-        <button className='btn-g' onClick={save}>ثبت</button>
+        <button className={value?'btn-g':'btn-g opacity-60'} onClick={save} disabled={value?false:true} >ثبت</button>
       </div>
     </div>
   </div>

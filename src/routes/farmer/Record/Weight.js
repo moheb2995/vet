@@ -1,7 +1,8 @@
 import React,{ useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import HerdAge from '../../../components/HerdAge';
+import DatePickerF from '../../../components/DatePickerF';
 
 const Weight = () => {
   const [show, setshow] = useState(false)
@@ -9,10 +10,12 @@ const Weight = () => {
   const [middle,setmiddle] = useState([])
   const [end,setend] = useState([])
   const [herd_age, setherd_age] = useState('')
-  const [date,setdate] = useState('2023-10-10')
+  const [date,setdate] = useState('')
+  const [value,setvalue] = useState('')
   const [data,setdata] = useState([])
   const [update,setupdate] = useState(false)
-
+  const params = useParams()
+  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
 
@@ -31,6 +34,25 @@ const Weight = () => {
     }
   },[])
 
+  function putOff(){
+    setbeginning([])
+    for(var i=0; i <= 24; i++) {
+      beginning.push('')
+      setbeginning(beginning)
+    }
+    setmiddle([])
+    for(var i=0; i <= 24; i++) {
+      middle.push('')
+      setmiddle(middle)
+    }
+    setend([])
+    for(var i=0; i <= 24; i++) {
+      end.push('')
+      setend(end)
+    }
+    setdate('');setvalue()
+  }
+
   useEffect(()=>{
     HerdAge(setherd_age)
   },[])
@@ -46,18 +68,14 @@ const Weight = () => {
     const method='POST'
     const api=`/api/v1/hen-weight/`
     Fetch(body,token,setdata,method,api,navigate)
+    putOff()
   }
-
-  function handleOnChenge(e,inx){
-    beginning[inx] = e.target.value; setbeginning(beginning)
-  }
-
 
 return (
 <div className='mb-6'>
   <button onClick={()=> setshow(!show)} className='btn'> وزن مرغ </button>
   <div className={show?"flex ":'hidden'}>
-    <div className="btn-b"><button > مشاهده تاریخچه </button></div>
+  <div className="btn-b"><Link className='flex items-center' to={`${param}/V_WeightV`}> مشاهده تاریخچه </Link></div>
     <div dir='ltr' className="card1 flex-col ">
       <h3 className="mb-2 mt-3 text-lg ">: ابتدای سالن </h3>
       <div className="flex flex-wrap mx-auto ">
@@ -81,12 +99,12 @@ return (
       </div>
       <div className="flex justify-between w-full items-end ">
         <div className="flex mr-2">
-          <button className='btn-g' onClick={save}>ثبت</button>
-          <button className='btn-r ml-2'>انصراف</button>
+          <button className={value?'btn-g':'btn-g opacity-60'} onClick={save} disabled={value?false:true} >ثبت</button>
+          <button className='btn-r ml-2 ' onClick={putOff}>انصراف</button>
         </div>
 
         <div className="flex items-end ">
-          <input className='mx-2' type="text" />
+          <DatePickerF setdate={setdate} value={value} setvalue={setvalue} />
           <h3 className="mb-2 mt-3 text-lg ">: تاریخ </h3> 
         </div>
       </div>

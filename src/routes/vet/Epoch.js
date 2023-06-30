@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
-import { myContext } from '../../context'
+// import { myContext } from '../../../context'
+import InfoSalon from './InfoSalonV'
 
 const Epoch = () => {
-  const {epoch,setepoch} = useContext(myContext)
+  // const {epoch,setepoch} = useContext(myContext)
   const [data,setdata] = useState([])
+  const [show,setshow] = useState(false)
+  const [EpochId,setEpochId] = useState('')
   const navigate =useNavigate()
   const id = useParams().salonId
 
@@ -18,24 +21,28 @@ const Epoch = () => {
   },[])
 
 return (
-<div className='center'>
-  <div className="w-96 min-h-[90vh] ">
-    {
-      data.length === 0 ? '':
-      data.map(i => <Link key={i.id} to={`EpochId/${i.id}/OffersV`} className={i.end_date === null?'card2':"card2 opacity-70" }>
-      <div>
-        <h5 className="mb-1"> تاریخ آغاز دوره : </h5>
-        <h5 className="mb-1"> تاریخ پایان دوره : </h5>
-        <h5 className=""> نوع مرغ : </h5>
+<>
+  <div className='center'>
+    <div className="w-96 min-h-[90vh] ">
+      {
+        data.length === 0 ? '':
+        data.reverse().map(i => <div key={i.id} className={i.end_date === null?'card2':"card2 opacity-70" } onClick={()=>{setshow(true); setEpochId(i.id)}}>
+        <div>
+          <h5 className="mb-1"> تاریخ آغاز دوره : </h5>
+          <h5 className="mb-1"> تاریخ پایان دوره : </h5>
+          <h5 className=""> نوع مرغ : </h5>
+        </div>
+        <div>
+          <h5 className="mb-1">{i.start_date} </h5>
+          <h5 className="mb-1">{i.end_date?'i.end_date':'در حال پرورش'} </h5>
+          <h5 className="">{i.hen_type} </h5>
+        </div>
       </div>
-      <div>
-        <h5 className="mb-1">{i.start_date} </h5>
-        <h5 className="mb-1">{i.end_date?'i.end_date':'در حال پرورش'} </h5>
-        <h5 className="">{i.hen_type} </h5>
-      </div>
-    </Link>
-    )}
+      )}
+    </div>
   </div>
-</div>
+  {show? <InfoSalon setshow={setshow} EpochId={EpochId} />: ''}
+  
+</>
 )}
 export default Epoch

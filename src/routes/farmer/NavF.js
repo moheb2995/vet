@@ -4,13 +4,13 @@ import Fetch from '../../components/Fetch'
 import { myContext } from '../../context'
 
 const NavF = () => {
-  const {epoch,setepoch} = useContext(myContext)
+  const {epoch} = useContext(myContext)
   const [data,setdata] = useState([])
   const navigate =useNavigate()
   const id = useParams().id
   const EpochId = useParams().EpochId
   const params = useParams()
-  const param = `HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${EpochId}`
+  const param = `HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}`
 
   console.log(epoch);
   useEffect(()=>{
@@ -20,7 +20,6 @@ const NavF = () => {
     const api=`/api/v1/user-info/`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
-  // console.log(epoch);
 
 return (
 <>
@@ -45,7 +44,7 @@ return (
     <div className="px-10 mt-2">
       <Link to={`/NavF/HomePage/${id}`} className='ads_bar'>{params.id?' سالن ها ':''} </Link>
       <Link to={`/NavF/HomePage/${id}/SalonId/${params.SalonId}`} className='ads_bar'>
-        {params.SalonId?`/ سالن ${epoch.salon_name?epoch.salon_name:''} `:''}
+        {params.SalonId?`${epoch.salon_name?`/ سالن ${epoch.salon_name}`:''} `:''}
       </Link>
       <div className={EpochId?"ads_barr inline-block":'hidden'}>/ دوره {`${epoch.is_active?' فعال ':'غیر فعال'}`}</div>
       <div className={epoch.is_active?"inline-block mx-1":'hidden'}> ({epoch.herd_age} روزگی)</div>

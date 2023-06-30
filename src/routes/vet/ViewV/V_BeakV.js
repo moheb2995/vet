@@ -5,12 +5,13 @@ import Fetch from '../../../components/Fetch'
 const V_BeakV = () => {
   const [data,setdata] = useState([])
   const navigate =useNavigate()
+  const id = useParams().EpochId
 
   useEffect(()=>{
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/beak-trimming/?epoch_id=3d1652bd-4ecb-4e3b-b352-aa6a876af510`
+    const api=`/api/v1/beak-trimming/?epoch_id=${id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 

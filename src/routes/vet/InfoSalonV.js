@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { myContext } from '../../../context'
-import Fetch from '../../../components/Fetch'
+import { myContext } from '../../context'
+import Fetch from '../../components/Fetch'
 import { useNavigate, Link } from 'react-router-dom'
 
-const InfoSalon = ({setshow2, EpochId }) => {
-  const {epoch,setepoch} = useContext(myContext)
+const InfoSalon = ({setshow, EpochId }) => {
+  const {setepoch} = useContext(myContext)
   const [data,setdata] = useState('')
   const [update,setupdate] = useState(false)
   const navigate =useNavigate()
-  const param = `EpochId/${EpochId}`
+  
   useEffect(()=>{
     setupdate(!update)
   },[])
@@ -23,22 +23,9 @@ const InfoSalon = ({setshow2, EpochId }) => {
   
   if (data !== ''){setepoch(data)}
 
-  
-  function ok(){
-    const body={ epoch_id: EpochId }
-    const token=true
-    const method='POST'
-    const api=`/api/v1/epochs/end/`
-
-    if(window.confirm(' آیا از این کار اطمینان دارید این عمل غیر قابل بازگشت است')) {
-      Fetch(body,token,setdata,method,api,navigate)
-      setupdate(!update)
-    }
-  }
-
 return (
 <>
-<div onClick={()=> setshow2(false)} className="backdrop"></div>
+<div onClick={()=> setshow(false)} className="backdrop"></div>
   <div className="center ">
     <div className="z-40 bg-white rounded-xl p-8 px-14 fixed top-[10vh] ">
       <h1 className="text-3xl mx-28 mb-8 "> مشخصات سالن و دوره پرورش </h1>
@@ -63,10 +50,8 @@ return (
         </div>
       </div>
       <div className="flex justify-center mt-7 ">
-        <Link className='info_btn text-black' to={`${param}/View`}> نمایش اطلاعات </Link>
-        <Link className={data.is_active?'info_btn text-black':'hidden'} to={`${param}/Record`}> ثبت اطلاعات  </Link>
-        <Link className='info_btn text-black' to={`${param}/NavO`}> پیشنهادات </Link>
-        <button className={data.is_active?'info_btn text-red-500':'hidden'} onClick={ok}> اتمام دوره پرورش </button>
+        <Link className='info_btn text-black' to={`EpochId/${EpochId}/ViewV`}> نمایش اطلاعات </Link>
+        <Link className='info_btn text-black' to={`EpochId/${EpochId}/OffersV`}> پیشنهادات </Link>
       </div>
     </div>
   </div>

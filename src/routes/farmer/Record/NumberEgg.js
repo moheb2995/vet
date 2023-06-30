@@ -1,15 +1,18 @@
 import React,{ useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 const NumberEgg = () => {
   const [date, setdate] = useState('')
   const [number, setnumber] = useState('')
   const [show, setshow] = useState(false)
+  const params = useParams()
+  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
 
 return (
 <div className='mb-6 '>
   <button onClick={()=> setshow(!show)} className='btn'> تعداد تخم مرغ تولیدی </button>
   <div className={show?"flex ":'hidden'}>
-    <div className="btn-b"><button > مشاهده تاریخچه </button></div>
+  <div className="btn-b"><Link className='flex items-center' to={`${param}/V_NumberEggV`}> مشاهده تاریخچه </Link></div>
     <div className="card1">
       <div className="grid grid-cols-2 text-center gap-4 m-auto">
         <h5 className="-m-2"> تخم مرغ تعداد </h5>

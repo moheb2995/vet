@@ -4,10 +4,7 @@ const Fetch = (body,token,setdata,method,api,navigate) => {
   const cookies = new Cookies()
   const access = cookies.get('access')
   const refresh = cookies.get('refresh')
-  // console.log(access);
-  // console.log(`${process.env.REACT_APP_BASE_URL}${api}`);
 
-  // function request(){
     fetch(`${process.env.REACT_APP_BASE_URL}${api}`,{
       method,
       headers: token?

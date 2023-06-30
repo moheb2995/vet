@@ -1,19 +1,21 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import Fetch from '../../../../components/Fetch'
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 
-const V_LossV = () => {
-  const [chart,setchart] = useState({
-    labels : [1,2,3,4,5,6,7,8,9,10,11,12],
+const DailyCount = ({id, navigate}) => {
+  const [data,setdata] = useState({})
+
+  const chart ={
+    labels : data.herd_age_list,
     datasets: [
       {
-        label: 'بنویس',
-        data: [35,40,20,50,],
+        label: 'شمار',
+        data: data.count_list,
         // data: {count:50, min: -100, 10: 100},
         backgroundColor: [
           'rgba(111 255 241)',
           // 'rgba(115 155 244)',
-          
         ],
         borderColor: [
           'rgb(111 255 241)',
@@ -31,12 +33,11 @@ const V_LossV = () => {
         // indexAxis:'y'
       },
       {
-        label: 'hahahaaa',
-        data: [15,40,30,30,],
+        label: 'کاتاف',
+        data: data.cutoff_list,
         backgroundColor: [
           // 'rgba(111 255 241)',
           'rgba(115 155 244)',
-          
         ],
         borderColor: [
           'rgb(111 255 241)',
@@ -44,7 +45,7 @@ const V_LossV = () => {
         borderWidth: 1,
       }
     ]
-  })
+  }
 
   const options ={
     plugins: {
@@ -59,11 +60,18 @@ const V_LossV = () => {
       y: {stacked: true }     
     }
 	}
-  
-return (
-<div className=''>
-<Bar data={chart} options={options}/>
 
+  useEffect(()=>{
+    const body=undefined
+    const token=true
+    const method='GET'
+    const api=`/api/v1/loss/daily-count/?epoch_id=${id}`
+    Fetch(body,token,setdata,method,api,navigate)
+  },[])
+
+return (
+<div>
+  <Bar data={chart} options={options}/>
 </div>
 )}
-export default V_LossV
+export default DailyCount

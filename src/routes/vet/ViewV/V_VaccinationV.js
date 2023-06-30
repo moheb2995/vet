@@ -3,50 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 
 const V_VaccinationV = () => {
-  const [data,setdata] = useState([
-    {
-        "id": "519505b6-7cc0-4d36-9c7b-95a5ee53b0b7",
-        "date": "2023-07-07",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 37
-    },
-    {
-        "id": "c4547b3f-ef62-4e36-86d8-7a1ef7ce61e9",
-        "date": "2023-06-07",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 37
-    },
-    {
-        "id": "41c032ee-d35b-488c-9e2e-f683bd5933e6",
-        "date": "2023-06-07",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 37
-    },
-    {
-        "id": "a0d4986a-42b1-4107-93f8-a07594ed9413",
-        "date": "2023-06-07",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 37
-    },
-    {
-        "id": "30efa064-31eb-4277-af45-4c4d90af7c3c",
-        "date": "2023-06-08",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 38
-    },
-    {
-        "id": "49ab19df-9f5d-49ab-888b-f7d8f0c74877",
-        "date": "2023-06-10",
-        "name": "NEWCASTLE",
-        "how_to_use": "EYE_DROP",
-        "herd_age": 40
-    }
-])
+  const [data,setdata] = useState([])
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
   
@@ -55,7 +12,7 @@ const V_VaccinationV = () => {
     const token=true
     const method='GET'
     const api=`/api/v1/vaccination/?epoch_id=${epoch_id}`
-    // Fetch(body,token,setdata,method,api,navigate)
+    Fetch(body,token,setdata,method,api,navigate)
   },[])
 
 return (

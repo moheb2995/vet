@@ -8,6 +8,7 @@ const HomePage = () => {
   const [location,setlocation] = useState('')
   const [data,setdata] = useState([])
   const [update,setupdate] = useState(false)
+  const [add,setadd] = useState(0)
   const navigate =useNavigate()
   const id = useParams().id
   console.log(id);
@@ -18,7 +19,7 @@ const HomePage = () => {
     const method='GET'
     const api=`/api/v1/salons/?farmer_id=${id}`
     Fetch(body,token,setdata,method,api,navigate)
-  },[update])
+  },[update,add])
 
   const addSalon=async()=>{
     const body = { name, location, farmer: id }
@@ -26,6 +27,11 @@ const HomePage = () => {
     const method = 'POST'
     const api = '/api/v1/salons/create/'
     Fetch(body,token,setdata,method,api,navigate)
+    setshow(false);setname('');setlocation('');setadd(add+1)
+    setTimeout(() => {
+      setupdate(add + 1)
+      console.log(add);
+    }, 1000);
   }
   
   if(data.length === 0)return <h1>loading...</h1>
@@ -66,8 +72,8 @@ return (
           </div>
         </div>
         <div className="flex justify-end mt-10 ">
-          <button className='btn-r mx-2'>انصراف</button>
-          <button className='btn-g' onClick={addSalon}>ثبت</button>
+          <button className='btn-r mx-2'onClick={()=>{setshow(false);setname('');setlocation('')}}>انصراف</button>
+          <button className={name&&location?'btn-g':'btn-g opacity-60'} onClick={addSalon} disabled={name&&location?false:true} >ثبت</button>
         </div>
       </div>
     </div>
