@@ -4,7 +4,7 @@ import Fetch from '../../components/Fetch'
 import { myContext } from '../../context'
 
 const HomePageV = () => {
-   const [data,setdata] = useState(undefined)
+   const [data,setdata] = useState([])
    const {setfarmerName} = useContext(myContext)
    const navigate =useNavigate()
    const id = useParams().id
