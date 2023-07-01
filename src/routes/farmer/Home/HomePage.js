@@ -1,10 +1,12 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import Fetch from '../../../components/Fetch'
 import { useNavigate, Link, useParams } from "react-router-dom";
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
+import { myContext } from '../../../context'
 
 const HomePage = () => {
+  const {setsalonName} = useContext(myContext)
   const [show,setshow] = useState(false)
   const [name,setname] = useState('')
   const [location,setlocation] = useState('')
@@ -72,7 +74,7 @@ return (
       <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن سالن </button>
       {
         data.length > 0?
-        data.map(i =><Link key={i.id} to={`SalonID/${i.id}`} >
+        data.map(i =><Link  key={i.id} to={`SalonID/${i.id}`} onClick={()=>setsalonName(i.name)}>
           <div className="rounded-lg p-4 px-7 ml-5 mt-4 grid grid-cols-2 text-center gap-2 bg-slate-200" >
             <h4 className=""> نام سالن:</h4>
             <h4 className=""> {i.name} </h4>

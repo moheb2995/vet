@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react'
+import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const NavO = () => {
@@ -6,7 +6,7 @@ const NavO = () => {
 
 return (
 <div className='flex gap-10'>
-  <nav className='border flex flex-col p-2 px-6 shadow-xl rounded-3xl text-center h-min'>
+  <nav className='border flex flex-col p-2 py-6 shadow-xl rounded-3xl text-center h-min'>
     <NavLink to={'O_Vaccination'} className={({isActive}) => isActive? 'active':'not_active'}> واکسیناسیون </NavLink> <hr />
     <NavLink to={'O_Ration'} className={({isActive}) => isActive? 'active':'not_active'}> جیره </NavLink> <hr />
     <NavLink to={'O_LightClock'} className={({isActive}) => isActive? 'active':'not_active '}> ساعات روشنایی </NavLink> <hr />
@@ -15,10 +15,7 @@ return (
   </nav>
 
   <div className="w-full ">
-    <div className="flex justify-end mb-6 -mt-7">
-      <button className='active w-auto p-2 px-5 shadow-md'> اتمام دوره پرورش </button>
-    </div>
-    <Outlet/>
+    <Outlet />
   </div>
 </div>
 )}

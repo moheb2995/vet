@@ -36,12 +36,6 @@ const DailyRate = ({id, navigate}) => {
   }
 
   const options ={
-    plugins: {
-      title: {
-        display: true,
-        text: 'سن-درصد تلفات'
-      },
-    },
     responsive: true,
     scales: {
       x: {stacked: true },
@@ -59,6 +53,7 @@ const DailyRate = ({id, navigate}) => {
 
 return (
 <div>
+  <h2 className="bold text-xl text-center m-4">نمودار سن-درصد تلفات  </h2>
   <Bar data={chart} options={options}/>
 </div>
 )}

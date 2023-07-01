@@ -48,12 +48,6 @@ const DailyCount = ({id, navigate}) => {
   }
 
   const options ={
-    plugins: {
-      title: {
-        display: true,
-        text: 'سن-تعداد تلفات'
-      },
-    },
     responsive: true,
     scales: {
       x: {stacked: true },
@@ -71,6 +65,7 @@ const DailyCount = ({id, navigate}) => {
 
 return (
 <div>
+  <h2 className="bold text-xl text-center m-4">نمودار سن-تعداد تلفات  </h2>
   <Bar data={chart} options={options}/>
 </div>
 )}

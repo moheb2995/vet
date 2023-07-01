@@ -5,7 +5,7 @@ import { myContext } from '../../context'
 
 const NavV = () => {
   const [data,setdata] = useState([])
-  const {epoch,farmerName} = useContext(myContext)
+  const {epoch,farmerName,salonName} = useContext(myContext)
   console.log(farmerName);
 
   const navigate =useNavigate()
@@ -51,7 +51,7 @@ return (
       </div>
     </div>
     
-    <div className="px-10 mt-2">
+    <div className="px-10 mt-2 text-[17px] ">
       <Link to={`/NavV/HomePageV/${id}`} className='ads_bar'>{params.id?`آقا/خانم ${farmerName}`:''} </Link>
 
       <Link to={`/NavV/HomePageV/${id}/userId/${params.userId}`} className='ads_bar'>
@@ -59,7 +59,7 @@ return (
       </Link>
 
       <Link to={`/NavV/HomePageV/${id}/userId/${params.userId}`} className='ads_bar'>
-        {epoch.salon_name?`/ سالن ${epoch.salon_name}`:''}
+        {salonName?`/ سالن ${salonName}`:''}
       </Link>
 
       <div className={params.EpochId?"ads_barr inline-block":'hidden'}>/ دوره {`${epoch.is_active?' فعال ':'غیر فعال'}`}</div>
