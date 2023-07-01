@@ -22,7 +22,7 @@ const O_Vaccination = () => {
 if(data.length === 0)return <h1 className="text"> پیشنهادی وجود ندارد</h1>
 return (
 <>
-  <h1 className=" text-center text-2xl mb-4"> واکسیناسیون پیشنهادی دامپزشک </h1>
+  <h2 className=" text-center text-2xl mb-4"> واکسیناسیون پیشنهادی دامپزشک </h2>
   <div className='center'>
     <div className="flex flex-col text-center">
       {data.map(i=>

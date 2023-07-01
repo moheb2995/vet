@@ -1,3 +1,4 @@
+@import url('./Webfonts/style.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

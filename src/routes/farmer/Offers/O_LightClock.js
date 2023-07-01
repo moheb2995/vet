@@ -20,7 +20,7 @@ const O_LightClock = () => {
 if(data.length === 0)return <h1 className="text"> پیشنهادی وجود ندارد</h1>
 return (
 <>
-  <h1 className=" text-center text-2xl mb-4"> ساعات روشنایی پیشنهادی دامپزشک </h1>
+  <h2 className=" text-center text-2xl mb-4"> ساعات روشنایی پیشنهادی دامپزشک </h2>
 
   <div className="flex justify-center text-center">
     <div className="flex flex-col">

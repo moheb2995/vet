@@ -21,7 +21,7 @@ const O_Ration = () => {
 if(data.length === 0)return <h1 className="text"> پیشنهادی وجود ندارد</h1>
 return (
 <>
-  <h1 className=" text-center text-2xl mb-4"> جیره های پیشنهادی دامپزشک </h1>
+  <h2 className=" text-center text-2xl mb-4"> جیره های پیشنهادی دامپزشک </h2>
 
   <div className='flex flex-col text-center mt-4 '>
   {data.map(i=>

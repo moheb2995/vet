@@ -21,7 +21,7 @@ const O_Beak = () => {
 if(data.length === 0)return <h1 className="text">پیشنهادی وجود ندارد</h1>
 return (
 <>
-  <h1 className=" text-center text-2xl mb-4"> تاریخ های پیشنهادی دامپزشک برای نوک چینی </h1>
+  <h2 className=" text-center text-2xl mb-4"> تاریخ های پیشنهادی دامپزشک برای نوک چینی </h2>
 
   <div className="flex justify-center flex-col text-center">
     {data.map(i =>
