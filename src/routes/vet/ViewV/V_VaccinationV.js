@@ -2,6 +2,8 @@ import React,{ useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
+import VacccineT from '../../../components/en_to_fa/VacccineT'
+import UseT from '../../../components/en_to_fa/UseT'
 
 const V_VaccinationV = () => {
   const [data,setdata] = useState([])
@@ -27,8 +29,8 @@ return (
           <h5 className="-m-2 border-l px-1 ">طریقه مصرف</h5>
           <h5 className="-m-2 border-l px-1 ">سن</h5>
           <h5 className="-m-2 px-1 ">تاریخ</h5>
-          <h6 className="px-1">{i.name} </h6>
-          <h6 className="px-1">{i.how_to_use} </h6>
+          <h6 className="px-1"><VacccineT vacccine={i.name} /> </h6>
+          <h6 className="px-1"><UseT use={i.how_to_use} /> </h6>
           <h6 className="px-1">{i.herd_age} </h6>
           <h6 className="px-1">{Gregorian_to_jalali(i.date)} </h6>
         </div>

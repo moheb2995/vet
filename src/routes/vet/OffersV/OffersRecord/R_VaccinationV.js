@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../../components/Fetch'
+import Use from '../../../../components/option/Use'
+import Vaccine from '../../../../components/option/Vaccine'
 import HerdAge from '../../../../components/HerdAge';
 import DatePickerV from '../../../../components/DatePickerV';
 
@@ -36,12 +38,9 @@ return (
     <h5 className="h-min -m-2">نام واکسن</h5>
     <h5 className="h-min -m-2">طریقه مصرف</h5>
     <h5 className="h-min -m-2">تاریخ</h5>
-      <select className='h-min' onChange={e=>setname(e.target.value)}>
-        <option value="NEWCASTLE">NEWCASTLE</option>
-      </select>
-      <select className='h-min' onChange={e=>setuse(e.target.value)}>
-        <option value="EYE_DROP">EYE_DROP</option>
-      </select>
+
+    <select className='h-min' onChange={e=>setname(e.target.value)}><Vaccine /> </select>
+    <select className='h-min' onChange={e=>setuse(e.target.value)}><Use /> </select>
     <DatePickerV setdate={setdate} value={value} setvalue={setvalue} />
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">

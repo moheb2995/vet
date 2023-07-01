@@ -1,8 +1,10 @@
 import React,{ useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import Fetch from '../../../components/Fetch'
 import HerdAge from '../../../components/HerdAge';
 import DatePickerF from '../../../components/DatePickerF';
+import Fetch from '../../../components/Fetch'
+import Use from '../../../components/option/Use'
+import Vaccine from '../../../components/option/Vaccine'
 
 const Vaccination = () => {
   const [date,setdate] = useState('')
@@ -51,14 +53,9 @@ return (
         <h5 className="-m-2">طریقه مصرف</h5>
         <h5 className="-m-2">سن</h5>
         <h5 className="-m-2">تاریخ</h5>
-        <select onChange={e=>setname(e.target.value)}>
-        <option value="">  </option>
-        <option value="NEWCASTLE"> نیوکاسل </option>
-        </select>
-        <select onChange={e=>setuse(e.target.value)}>
-        <option value="">  </option>
-          <option value="EYE_DROP"> قطره چشم </option>
-        </select>
+
+        <select onChange={e=>setname(e.target.value)}><Vaccine /> </select>
+        <select onChange={e=>setuse(e.target.value)}><Use /> </select>
         <input className='' value={age} onChange={e => setage(e.target.value)} />
         <DatePickerF setdate={setdate} value={value} setvalue={setvalue} />
       </div>

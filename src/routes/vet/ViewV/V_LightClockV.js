@@ -18,7 +18,7 @@ const V_LightClockV = () => {
 
 if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
-<div className="flex justify-center text-center">
+<div className="flex flex-col text-center">
   {data.map(i=>
     <div key={i.id} className="border-2 rounded-3xl m-2 p-4 md:px-12 px-4 ">
       <div className="grid grid-cols-5 text-center gap-4">
@@ -30,9 +30,6 @@ return (
         <h6 className="">{Gregorian_to_jalali(i.date)} </h6>
         <h6 className="">{i.light_color} </h6>
         <h6 className="">{i.light_intensity} </h6>
-        {/* <select name="" id="">
-          <option value="">jhvjxd</option>
-        </select> */}
         <div className="flex flex-col">
           {i.lighting_hours.map(i=>
             <div className="">{i.start_time} - {i.end_time} </div>

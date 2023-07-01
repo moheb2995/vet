@@ -1,17 +1,18 @@
 import React,{ useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
 
 const O_BeakV = () => {
   const [data,setdata] = useState([])
   const navigate =useNavigate()
+  const id = useParams().EpochId
 
   useEffect(()=>{
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/beak-trimming/suggestions/?epoch_id=16a399e0-7ec3-4f3f-a883-c70ba988190b`
+    const api=`/api/v1/beak-trimming/suggestions/?epoch_id=${id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 

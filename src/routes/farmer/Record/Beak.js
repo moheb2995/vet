@@ -5,11 +5,11 @@ import HerdAge from '../../../components/HerdAge'
 import DatePickerF from '../../../components/DatePickerF';
 
 const Beak = () => {
-  const [date, setdate] = useState('2023-10-10')
+  const [date, setdate] = useState('')
+  const [value,setvalue] = useState('')
   const [herd_age, setherd_age] = useState('')
   const [show, setshow] = useState(false)
   const [data,setdata] = useState([])
-  const [value,setvalue] = useState('')
   const navigate =useNavigate()
   const id = useParams().EpochId
   const params = useParams()

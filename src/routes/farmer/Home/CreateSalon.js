@@ -13,10 +13,8 @@ const CreateSalon = ({ setshow, id, setadd, add }) => {
   const [started,setstarted] = useState()
   const [firstNum,setfirstNum] = useState('')
   const [lastNum,setlastNum] = useState('')
-
   const [data,setdata] = useState([])
   const navigate =useNavigate()
-
 
   const create =async ()=>{
     const body = {
@@ -54,9 +52,9 @@ return (
         </div>
         <div>
           <select className="" onChange={e => settype(e.target.value)}> 
-          <option value=""> </option>
-          <option value="LAYING">مرغ تخمگذار </option>
-            <option value="BROILER">مرغ گوشتی </option>
+            <option value=""> </option>
+            <option value="LAYING"> مرغ تخمگذار </option>
+            <option value="BROILER"> مرغ گوشتی </option>
           </select><br />
           <input className="my-3" value={race} onChange={e => setrace(e.target.value)} /> <br/>
           <input className="" value={name} onChange={e => setname(e.target.value)} /> <br/>

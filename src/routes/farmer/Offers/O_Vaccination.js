@@ -2,6 +2,9 @@ import React,{ useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
+import UseT from '../../../components/en_to_fa/UseT'
+import VacccineT from '../../../components/en_to_fa/VacccineT'
+import StatusT from '../../../components/en_to_fa/StatusT'
 
 const O_Vaccination = () => {
   const [data,setdata] = useState([])
@@ -31,13 +34,13 @@ return (
           <h3 className=" border-l px-1"> تاریخ </h3>
           <h3 className=""> وضعیت </h3>
 
-          <h6 className="mt-2">{i.name} </h6>
-          <h6 className="mt-2">{i.how_to_use} </h6>
+          <h6 className="mt-2"><VacccineT vacccine={i.name} /> </h6>
+          <h6 className="mt-2"><UseT use={i.how_to_use} /> </h6>
           <h6 className="mt-2">{i.herd_age} </h6>
           <h6 className="mt-2">{Gregorian_to_jalali(i.suggested_at)} </h6>
-          <p className="mt-2">{i.status == 'PENDING'?'در انتظار':i.status == 'DONE'?'انجام شده':'پذیرفته نشده'} </p>
+          <p className="mt-2"><StatusT status={i.status} /> </p>
         </div>
-        {/* <p className="text-right mt-4">jkfgbjdfksgvb jfvbsdzjkvdsfkv sdjkfbdskvbdsv kjdsfds</p> <br /> */}
+        {/* <p className="text-right mt-4">llllllllllll</p> <br /> */}
         <div className="flex justify-between -mb-[30px] w-[100%] ">
           <div className="border-2 rounded-full text-sm bg-white px-4 pt-0.5 "> تاریخ ثبت {Gregorian_to_jalali(i.date)} </div>
           <div className="">

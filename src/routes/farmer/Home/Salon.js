@@ -21,7 +21,6 @@ const Salon = () => {
 
   useEffect(()=>{
     setupdate(!update)
-
   },[])
 
   useEffect(()=>{
@@ -51,12 +50,17 @@ const Salon = () => {
     ]
   }
 
+  function creact(){
+    if(data[0].is_active&&window.confirm('⚠️ساخت دوره جدید به منزله پایان یافتن دوره قبلی است ')){setshow(true)}
+    if(!data[0].is_active) {setshow(true)}
+  }
+
 return (
 <div className="">
 
   <div className='flex justify-around '>
     <div className="border-l border-slate-400 w-96 min-h-[90vh] ">
-      <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={()=> setshow(true)}> افزودن دوره پرورش </button> <br />
+      <button className='text-slate-500 bold border-[1.5px] border-slate-500 p-2 px-6 mb-1 italic rounded 'onClick={data.length>0?creact:()=>setshow(true)}> افزودن دوره پرورش </button> <br />
       {
         data.length === 0 ? <h2 className="text-lg my-3">هنوز دوره پرورشی وجود ندارد</h2>:
         data.map(i => <button key={i.id}
@@ -68,10 +72,9 @@ return (
           <h5 className=""> نوع مرغ : </h5>
         </div>
         <div>
-          <h5 className="mb-1">{gregorian_to_jalali(i.start_date)
-          } </h5>
-          <h5 className="mb-1">{i.is_active?' در حال پرورش ':' اتمام دوره '} </h5>
-          <h5 className="">{i.hen_type} </h5>
+          <h5 className="mb-1">{gregorian_to_jalali(i.start_date)} </h5>
+          <h5 className="mb-1">{i.is_active?' در حال پرورش ':gregorian_to_jalali(i.end_date)} </h5>
+          <h5 className="">{i.hen_type === 'LAYING'?' مرغ تخمگذار ':' مرغ گوشتی '} </h5>
         </div>
       </button>
       )}

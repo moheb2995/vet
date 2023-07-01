@@ -93,7 +93,7 @@ return (
 
         <div className="flex items-end ">
           <DatePickerF setdate={setdate} value={value} setvalue={setvalue} />
-          <h3 className="mb-2 mt-3 text-lg ">: تاریخ </h3> 
+          <h3 className="mb-2 mt-3 text-lg mx-2 ">: تاریخ </h3> 
         </div>
       </div>
     </div>

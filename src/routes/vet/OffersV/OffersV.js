@@ -3,6 +3,8 @@ import { NavLink, Outlet } from 'react-router-dom'
 import R_BeakV from './OffersRecord/R_BeakV'
 import R_VaccinationV from './OffersRecord/R_VaccinationV'
 import R_LightClockV from './OffersRecord/R_LightClockV'
+import R_RationV from './OffersRecord/R_RationV'
+import R_prescriptionV from './OffersRecord/R_prescriptionV'
 
 const OffersV = () => {
   const [show,setshow] = useState(false)
@@ -32,18 +34,12 @@ return (
     <>    
     <div onClick={()=> setshow(false)} className="backdrop"></div>
     <div className="center ">
-      <div className="z-40 bg-white rounded-xl p-11 px-16 fixed top-[20%] "> 
-        {/* واکسیناسیون */}
+      <div className="z-40 bg-white rounded-xl p-11 px-16 fixed top-[20%] overflow-y-scroll max-h-[60vh]	"> 
         <R_VaccinationV/>
-        {/* جیره */}
-
-        {/* ساعات روشنایی */}
+        <R_RationV />
         <R_LightClockV setshow={setshow}/>
-        {/* نوک چینی */}
         <R_BeakV/>
-        {/* نسخه */}
-
-        {/*  */}
+        <R_prescriptionV />
       </div>
     </div>
     </>

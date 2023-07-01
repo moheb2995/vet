@@ -5,12 +5,12 @@ import Cookies from "universal-cookie";
 // 09125844121 vet
 // 09128458202 vet
 // 09121111111 farmer
-// 
 // 09362580015 admin
+// password 123
 
 const Login = () => {
-  const [userName,setuserName] = useState('09125844121')
-  const [password,setpassword] = useState('123')
+  const [userName,setuserName] = useState('')
+  const [password,setpassword] = useState('')
   const [data,setdata] = useState({role:''})
   const navigate =useNavigate()
   const cookies = new Cookies()

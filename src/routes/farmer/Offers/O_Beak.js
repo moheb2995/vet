@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import { myContext } from '../../../context'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
+import StatusT from '../../../components/en_to_fa/StatusT'
 
 const O_Beak = () => {
   const [data,setdata] = useState([])
@@ -30,14 +31,16 @@ return (
             {i.status}
           </div>
         </div> */}
-        <div className="mb-4 grid grid-cols-2">
+        <div className="mb-4 grid grid-cols-3">
           <div>
             <h4 className="my-2">تاریخ</h4>
             <h4 className="my-2">سن</h4>
+            <h3 className="my-2"> وضعیت </h3>
           </div>
           <div>
             <p className="my-2">{i.herd_age} </p>
             <p className="my-2">{Gregorian_to_jalali(i.suggested_at)} </p>
+            <p className="mt-2"><StatusT status={i.status} /> </p>
           </div>
         </div>
         <div className="flex justify-between -mb-[30px] ">

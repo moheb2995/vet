@@ -1,6 +1,8 @@
 import React,{ useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
+import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
+import RationT from '../../../components/en_to_fa/RationT'
 
 const V_RationV = () => {
   const [data,setdata] = useState([])
@@ -17,28 +19,20 @@ const V_RationV = () => {
   
 if(data.length === 0)return <h1 className="text"> اطلاعاتی هنوز ثبت نشده</h1>
 return (
-<div className='center mt-4'>
-  <table className='text-center w-3/5 '>
-    <thead>
-      <tr className="">
-        <th className="th_Ration"> نوع جیره </th>
-        <th className="th_Ration"> مقدار </th>
-        <th className="th_Ration"> تاریخ </th>
-      </tr>
-    </thead>
+  <div className='flex flex-col text-center mt-4 '>
     {data.map(i=>
-      <tbody>
-        <tr>
-        <td className=" p-0">{i.data.map((i)=><div className="t_Ration">{i.name} </div> )}</td>
-        <td className=" p-0">{i.data.map((i)=><div className="t_Ration">{i.amount}</div> )}</td>          
-        <td className="t_Ration">{i.date}</td>
-        </tr>
-      </tbody>
+      <div key={i.id} className="border-2 rounded-3xl m-2 p-4 md:px-12 px-4 w-4/5 mx-auto ">
+        <div className="grid grid-cols-3 text-center gap-4">
+          <h5 className="my-2 border-l border-[#707070] "> نوع جیره </h5>
+          <h5 className="my-2 border-l border-[#707070] "> مقدار </h5>
+          <h5 className="my-2 ">تاریخ</h5>
+          
+          <div>{i.data.map((i)=> <h6 className="mx-2">{<RationT ration={i.name} />} </h6>)}</div>
+          <div>{i.data.map((i)=> <h6 className="mx-2">{i.amount} </h6>)}</div>
+          <h6 className='mx-2'>{Gregorian_to_jalali(i.date)} </h6>
+        </div>
+      </div>
     )}
-    <tfoot className='text-center '>
-      <td></td>
-    </tfoot>
-  </table>
-</div>
+  </div>
 )}
 export default V_RationV
