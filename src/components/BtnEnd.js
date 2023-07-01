@@ -17,11 +17,11 @@ const BtnEnd = () => {
     const token=true
     const method='POST'
     const api=`/api/v1/epochs/end/`
-    epoch.end_date = 'now'
     setepoch(epoch)
-
+    
     if(window.confirm(' آیا از این کار اطمینان دارید این عمل غیر قابل بازگشت است')) {
       Fetch(body,token,setdata,method,api,navigate)
+      epoch.end_date = 'now'
       setupdate(!update)
     }
   }

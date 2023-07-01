@@ -12,7 +12,7 @@ const R_LightClockV = ({setshow}) => {
   const [value,setvalue] = useState('')
   const [light_intensity, setlight_intensity] = useState('')
   const [light_color, setlight_color] = useState('')
-  const [hours, sethours] = useState([{start_time:'11:00',end_time:'20:55'}])
+  const [hours, sethours] = useState([{start_time:'',end_time:''}])
 
   const location = useLocation().pathname
   const params = useParams()
@@ -29,11 +29,11 @@ const R_LightClockV = ({setshow}) => {
     const token=true
     const method='POST'
     const api=`/api/v1/lighting/suggestions/`
-    Fetch(body,token,setdata,method,api,navigate)
+    if(value&&light_color&&light_intensity){Fetch(body,token,setdata,method,api,navigate); setshow(false)}
   }
 
   const plus =()=> {
-    hours.push({start_time:'00:00',end_time:'00:00'})
+    hours.push({start_time:'',end_time:''})
     setupdate(!update)
   }
 
@@ -63,7 +63,7 @@ return (
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>
-    <button className='btn-g ' onClick={save}>ثبت</button>
+    <button className={value&&light_color&&light_intensity?'btn-g ':'btn-g opacity-60 '} onClick={save}>ثبت</button>
   </div>
 </div>
 )}

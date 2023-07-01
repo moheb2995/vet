@@ -20,6 +20,7 @@ const Epoch = () => {
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 
+if(data.length === 0) return <h1 className="text">دوره ای وجود ندارد</h1>
 return (
 <>
   <div className='center'>

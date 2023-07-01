@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
 
 const Salons = () => {
-  const [data,setdata] = useState(undefined)
+  const [data,setdata] = useState([])
   const navigate =useNavigate()
   const id = useParams().userId
   // const id = useParams().userId
@@ -16,7 +16,7 @@ const Salons = () => {
     Fetch(body,token,setdata,method,api,navigate)
   },[])
 
-if(!data) return 'loading'
+if(data.length === 0) return <h1 className="text">سالنی وجود ندارد</h1>
 return (
 <div className="center">
   <div className='flex flex-col'>

@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import R_BeakV from './OffersRecord/R_BeakV'
 import R_VaccinationV from './OffersRecord/R_VaccinationV'
 import R_LightClockV from './OffersRecord/R_LightClockV'
 import R_RationV from './OffersRecord/R_RationV'
 import R_prescriptionV from './OffersRecord/R_prescriptionV'
+import { myContext } from '../../../context'
 
 const OffersV = () => {
   const [show,setshow] = useState(false)
+  const {epoch} = useContext(myContext)
 
 return (
 <>
@@ -21,8 +23,8 @@ return (
     </nav>
 
     <div className="w-full ">
-      <div className="flex justify-end mb-4">
-        <button className='active w-auto p-2 px-5 shadow-md' onClick={()=> setshow(true)}> ارسال پیشنهاد </button>
+      <div className={epoch.isActive?"flex justify-end mb-4 -mt-8":'flex justify-end mb-4 -mt-8 opacity-60'}>
+        <button className='active w-auto p-2 px-5 shadow-md' onClick={()=>{if(epoch.isActive){setshow(true)}}}> ارسال پیشنهاد </button>
       </div>
       <Outlet/>
     </div>
@@ -35,11 +37,11 @@ return (
     <div onClick={()=> setshow(false)} className="backdrop"></div>
     <div className="center ">
       <div className="z-40 bg-white rounded-xl p-11 px-16 fixed top-[20%] overflow-y-scroll max-h-[60vh]	"> 
-        <R_VaccinationV/>
-        <R_RationV />
-        <R_LightClockV setshow={setshow}/>
-        <R_BeakV/>
-        <R_prescriptionV />
+        <R_VaccinationV setshow={setshow} />
+        <R_RationV setshow={setshow} />
+        <R_LightClockV setshow={setshow} />
+        <R_BeakV setshow={setshow} />
+        <R_prescriptionV setshow={setshow} />
       </div>
     </div>
     </>

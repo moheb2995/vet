@@ -18,7 +18,7 @@ const R_BeakV = ({setshow}) => {
     const token=true
     const method='POST'
     const api=`/api/v1/beak-trimming/`
-    Fetch(body,token,setdata,method,api,navigate)
+    if(date){ Fetch(body,token,setdata,method,api,navigate); setshow(false) }
   }
   
 return (
@@ -30,7 +30,7 @@ return (
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>
-    <button className='btn-g ' onClick={save}>ثبت</button>
+    <button className={value?'btn-g ':'btn-g opacity-60'} onClick={save}>ثبت</button>
   </div>
 </div>
 )}

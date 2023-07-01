@@ -14,7 +14,7 @@ const O_Ration = () => {
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1//?epoch_id=${EpochId}`
+    const api=`/api/v1/ration/suggestions/?epoch_id=${EpochId}`
     Fetch(body,token,setdata,method,api,navigate) 
   },[])
 

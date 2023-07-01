@@ -5,7 +5,7 @@ import DatePickerF from '../../../../components/DatePickerF';
 import Fetch from '../../../../components/Fetch';
 import HerdAge from '../../../../components/HerdAge';
 
-const R_RationV = () => {
+const R_RationV = ({setshow}) => {
   const [type, settype] = useState([{name:'',amount:''}])
   const [data, setdata] = useState([])
   const [update,setupdate] = useState(false)
@@ -28,8 +28,7 @@ const R_RationV = () => {
     const token=true
     const method='POST'
     const api=`/api/v1/ration/suggestions/`
-    Fetch(body,token,setdata,method,api,navigate)
-    putOff()
+    if(type[0].amount&&type[0].name){Fetch(body,token,setdata,method,api,navigate); putOff()}
   }
 
   const plus =()=> {
@@ -38,7 +37,7 @@ const R_RationV = () => {
   }
 
   function putOff(){
-    settype([{name:'', amount:''}]);setvalue('');setdate('')
+    settype([{name:'', amount:''}]);setvalue('');setdate('');setshow(false)
   }
 
 return (

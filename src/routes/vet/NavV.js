@@ -63,7 +63,9 @@ return (
       </Link>
 
       <div className={params.EpochId?"ads_barr inline-block":'hidden'}>/ دوره {`${epoch.is_active?' فعال ':'غیر فعال'}`}</div>
-      <div className={epoch.is_active&&params.EpochId?"inline-block mx-1":'hidden'}> ({epoch.herd_age} روزگی)</div>
+      <div className={epoch.is_active&&params.EpochId?"inline-block mx-1":'hidden'}>
+        <div className={params.EpochId?"":'hidden'}> ({epoch.herd_age} روزگی)</div>
+      </div>
     </div>
   </div>
 

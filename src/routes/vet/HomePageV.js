@@ -16,7 +16,8 @@ const HomePageV = () => {
       const api=`/api/v1/farmers/?vet_id=${id}`
       Fetch(body,token,setdata,method,api,navigate)
    },[])
-   if(!data) return 'loading'
+
+if(data.length === 0) return <h1 className="text">مرغداری وجود ندارد</h1>
 return (
 <div className='flex justify-center flex-wrap gap-6 '>
    {data.map(i => 

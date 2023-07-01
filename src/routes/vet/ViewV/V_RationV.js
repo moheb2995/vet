@@ -13,7 +13,7 @@ const V_RationV = () => {
     const body=undefined
     const token=true
     const method='GET'
-    const api=`/api/v1/vaccination/?epoch_id=${epoch_id}`
+    const api=`/api/v1/ration/?epoch_id=${epoch_id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
   

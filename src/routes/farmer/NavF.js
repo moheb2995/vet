@@ -49,10 +49,12 @@ return (
           {params.SalonId?`${salonName?`/ سالن ${salonName}`:''} `:''}
         </Link>
         <div className={EpochId?"ads_barr inline-block":'hidden'}>/ دوره {`${epoch.is_active?' فعال ':'غیر فعال'}`}</div>
-        <div className={epoch.is_active?"inline-block mx-1":'hidden'}> ({epoch.herd_age} روزگی)</div>
+        <div className={epoch.is_active?"inline-block mx-1":'hidden'}>
+          <div className={EpochId?"":'hidden'}> ({epoch.herd_age} روزگی)</div>
+        </div>
       </div>
 
-      <BtnEnd />
+      {EpochId?<BtnEnd />:''}
     </div>
   </div>
 
