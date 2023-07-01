@@ -10,6 +10,7 @@ import { myContext } from '../../../context'
 const OffersV = () => {
   const [show,setshow] = useState(false)
   const {epoch} = useContext(myContext)
+  console.log(epoch);
 
 return (
 <>
@@ -23,8 +24,8 @@ return (
     </nav>
 
     <div className="w-full ">
-      <div className={epoch.isActive?"flex justify-end mb-4 -mt-8":'flex justify-end mb-4 -mt-8 opacity-60'}>
-        <button className='active w-auto p-2 px-5 shadow-md' onClick={()=>{if(epoch.isActive){setshow(true)}}}> ارسال پیشنهاد </button>
+      <div className={epoch.is_active?"flex justify-end mb-4 -mt-8":'flex justify-end mb-4 -mt-8 opacity-60'}>
+        <button className='active w-auto p-2 px-5 shadow-md' onClick={()=>{if(epoch.is_active){setshow(true)}}}> ارسال پیشنهاد </button>
       </div>
       <Outlet/>
     </div>
