@@ -20,7 +20,7 @@ const Seed = () => {
 
 return (
 <div className='mb-6'>
-  <button onClick={()=> setshow(!show)} className='btn'> مقدار دان مصرفی </button>
+  <button onClick={()=> setshow(false)} className='btn opacity-60'> مقدار دان مصرفی </button>
   <div className={show?"flex ":'hidden'}>
   <div className="btn-b"><Link className='flex items-center' to={`${param}/V_SeedV`}> مشاهده تاریخچه </Link></div>
     <div className="card1">

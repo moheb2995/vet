@@ -10,7 +10,7 @@ const NumberEgg = () => {
 
 return (
 <div className='mb-6 '>
-  <button onClick={()=> setshow(!show)} className='btn'> تعداد تخم مرغ تولیدی </button>
+  <button onClick={()=> setshow(false)} className='btn opacity-60'> تعداد تخم مرغ تولیدی </button>
   <div className={show?"flex ":'hidden'}>
   <div className="btn-b"><Link className='flex items-center' to={`${param}/V_NumberEggV`}> مشاهده تاریخچه </Link></div>
     <div className="card1">
