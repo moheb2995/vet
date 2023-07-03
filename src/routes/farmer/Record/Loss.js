@@ -30,7 +30,7 @@ const Loss = () => {
     const body={ epoch_id:EpochId, herd_age, date, count:number }
     const token=true
     const method='POST'
-    const api=`/api/v1/lighting/`
+    const api=`/api/v1/loss/`
     Fetch(body,token,setdata,method,api,navigate)
   }
   

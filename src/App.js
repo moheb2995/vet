@@ -39,6 +39,7 @@ import V_WeightV from "./routes/vet/ViewV/V_WeightV";
 import V_SeedV from "./routes/vet/ViewV/V_SeedV";
 
 import View from "./routes/farmer/View";
+import NotFound from "./NotFound";
 
 
 
@@ -48,6 +49,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path='*' element={<NotFound />} />
+
 
         <Route path='/NavF' element={<NavF/>} >
           <Route path="HomePage/:id" element={<HomePage />} />
