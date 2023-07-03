@@ -19,9 +19,10 @@ const Ration = () => {
   const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
   
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
+  console.log(herd_age);
   const save =async()=>{
     const body={ epoch_id:EpochId, herd_age, data:amount, date }
     const token=true
@@ -59,7 +60,7 @@ return (
               {amount.map((i,inx)=>
                 <tr key={inx} className="">
                   <td className="t_Ration">
-                    <select onChange={e=> {i.name = e.target.value; setamount(amount); setupdate(!update) }}><RationOption /> </select>
+                    <select className='w-full' onChange={e=> {i.name = e.target.value; setamount(amount); setupdate(!update) }}><RationOption /> </select>
                   </td>
                   <td className="t_Ration">
                     <input className='w-full ' value={i.amount} onChange={e=> {i.amount = Number(e.target.value); setamount(amount); setupdate(!update)}} type="number" />

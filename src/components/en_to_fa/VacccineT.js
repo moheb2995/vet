@@ -13,7 +13,7 @@ return (
     vacccine === 'NEWCASTLE_6_10_STRAIN'?'6/10':
     vacccine === 'NEWCASTLE_AVINEW_STRAIN'?'Avinew':
     vacccine === 'NEWCASTLE_VITAPEST_STRAIN'?'Vitapest':
-    vacccine === 'GUMBORO'?'GUMBORO (IBD)':
+    vacccine === 'GUMBORO'?'گامبرو (IBD)':
     vacccine === 'INFECTIOUS_BRONCHITIS'?'برونشیت (IBV)':
     vacccine === 'BRONCHITIS_H120_STRAIN'?'H120':
     vacccine === 'BRONCHITIS_H52_STRAIN'?'H52':
@@ -24,7 +24,7 @@ return (
     vacccine === 'BRONCHITIS_QX_STRAIN'?'QX':
     vacccine === 'AVIAN_INFLUENZA'?'آنفولانزا (AI)':
     vacccine === 'INFLUENZA_H9N2_STRAIN'?'H9N2':
-    vacccine === 'INFLUENZA_H5_STRAIN'?'c':
+    vacccine === 'INFLUENZA_H5_STRAIN'?'H5':
     vacccine === 'EGG_DROP_SYNDROME'?'(ED سندرم افت تولید تخم مرغS) ':
     vacccine === 'AVIAN_POX'?' آبله (POX) ':
     vacccine === 'INFECTIOUS_LARYNGOTRACHEITIS'?' لارینگوتراکئیت عفونی پرندگان (ILT) ':
@@ -33,9 +33,7 @@ return (
     vacccine === 'CHICKEN_INFECTIOUS_ANEMIA'?'کم خونی عفونی جوجه ها (CIA) (CAV)':
     vacccine === 'PASTEURELLA'?' پاستورلوز (وبای طیور) ':
     vacccine === 'ORNITHOBACTERIUM_RHINOTRACHEALE'?'ارینتوباکتریوم رینوتراکئاله (ORT) ':
-    vacccine === 'ORNITHOBACTERIUM_RHINOTRACHEALE'?' آنسفالومیلیت پرندگان (AE)':
-    vacccine === 'ORNITHOBACTERIUM_RHINOTRACHEALE'?'':
-    vacccine === 'AVIAN_ENCEPHALOMYELITIS'?' آنسفالومیلیت پرندگان (AE) ':
+    vacccine === 'AVIAN_ENCEPHALOMYELITIS'?' آنسفالومیلیت پرندگان (AE)':
     vacccine === 'MYCOPLASMA_GALISEPTICUM'?' مایکوپلاسما گالیسپتیکوم (MG) ':
     vacccine === 'MYCOPLASMA_SYNOVIAE'?' مایکوپلاسما ساینوویه (MS) ':
     vacccine === 'SWOLLEN_HEAD_SYNDROME'?' سندرم سر متورم (SHS) (کله بادی) ':

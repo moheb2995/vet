@@ -20,8 +20,8 @@ const R_RationV = ({setshow}) => {
   const EpochId = useParams().EpochId
 
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
   const save =async()=>{
     const body={ epoch_id:EpochId, herd_age, data:type, date }
@@ -52,7 +52,7 @@ return (
     <tbody>
       {type.map((i,inx)=>      
         <tr key={inx} className="">
-          <td className="t_Ration"><select onChange={e=> {type[inx].name = e.target.value; settype(type); setupdate(!update)}} ><RationOption /> </select></td>
+          <td className="t_Ration"><select className='w-full' onChange={e=> {type[inx].name = e.target.value; settype(type); setupdate(!update)}} ><RationOption /> </select></td>
           <td className="t_Ration">
             <input className='w-full ' value={i.amount} onChange={e=> {type[inx].amount = Number(e.target.value); settype(type); setupdate(!update)}} type="number" />
           </td>

@@ -65,7 +65,7 @@ return (
         data.length === 0 ? <h2 className="text-lg my-3">هنوز دوره پرورشی وجود ندارد</h2>:
         data.map(i => <button key={i.id}
         className={i.is_active?'card2':"card2 opacity-70" }
-        onClick={()=>{setshow2(true);setEpochId(i.id);cookie.remove('start_date');cookie.remove('epoch_id');cookie.set('start_date',i.start_date);cookie.set('epoch_id',i.id)}}>
+        onClick={()=>{setshow2(true);setEpochId(i.id);cookie.remove('epoch_id');cookie.set('epoch_id',i.id)}}>
         <div>
           <h5 className="mb-1"> تاریخ آغاز دوره : </h5>
           <h5 className="mb-1"> تاریخ پایان دوره : </h5>

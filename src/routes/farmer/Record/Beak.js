@@ -16,8 +16,8 @@ const Beak = () => {
   const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
 
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,id)}
+  },[date])
 
   const save =async()=>{
     const body={ "epoch_id": id, herd_age, date }

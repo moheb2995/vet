@@ -47,7 +47,7 @@ const DatePickerV = ({setdate,value,setvalue}) => {
   if(value.length !== 0){jalali_to_gregorian(jy,jm,jd)}
 
 return (
-<div dir='ltr' className='flex justify-between items-center border rounded min-w-[187px] mx-2 '>
+<div dir='ltr' className='flex justify-between items-center border rounded w-[220px] mx-2 '>
   <DatePicker 
     className=''
     value

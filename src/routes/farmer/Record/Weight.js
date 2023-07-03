@@ -42,8 +42,8 @@ const Weight = () => {
   }
 
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,epoch_id)}
+  },[date])
 
   const save =async()=>{
     const body={

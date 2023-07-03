@@ -14,9 +14,11 @@ const LightClock = () => {
   const [light_intensity, setlight_intensity] = useState('')
   const [light_color, setlight_color] = useState('')
   const [hours, sethours] = useState([{start_time:'',end_time:''}])
+  const navigate =useNavigate()
   const params = useParams()
-  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
-
+  const EpochId = useParams().EpochId
+  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${EpochId}/View`
+  
   function putOff(){
     setvalue('');
     setdate('')
@@ -25,12 +27,9 @@ const LightClock = () => {
     sethours([{start_time:'',end_time:''}])
   }
 
-  const EpochId = useParams().EpochId
-  const navigate =useNavigate()
-
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
   const save =async()=>{
     const body={ epoch_id:EpochId, herd_age, date, light_color, light_intensity, lighting_hours:hours }

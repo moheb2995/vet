@@ -39,21 +39,22 @@ return (
     ration === 'PALM_OIL'?' روغن پالم ':
     ration === 'SOYBEAN_OIL'?' روغن سویا ':
     ration === 'FISH_OIL'?' روغن ماهی ':
-    ration === 'FISH_OIL'?'چربی طیور ':
-    ration === 'CHICKEN_FAT'?' روغن گیاهی ':
-    ration === 'VEGETABLE_OIL'?'نمک':
-    ration === 'SALT'?'آنزیم':
-    ration === 'PEA'?'c':
-    ration === 'ENZYME'?'نخود':
-    ration === 'PEA'?'c':
-    ration === 'CALCIUM_CARBONATE'?'c':
+    ration === 'CHICKEN_FAT'?'چربی طیور ':
+    ration === 'VEGETABLE_OIL'?' روغن گیاهی ':
+    ration === 'SALT'?'نمک':
+    ration === 'ENZYME'?'آنزیم':
+    // ration === 'ENZYME'?'c':
+    ration === 'PEA'?'نخود':
+    // ration === 'PEA'?'c':
+    ration === 'CALCIUM_CARBONATE'?'کلسیم کربنات ':
     ration === 'DICALCIUM_PHOSPHATE'?' دی کلسیم فسفات ':
-    ration === 'MONOCALCIUM_PHOSPHATE'?' دی کلسیم فسفات ':
-    ration === 'SULFATE_CALCIUM'?' مونو کلسیم فسفات ':
-    ration === 'MAGNESIUM_OXIDE'?'سولفات کلسیم ':
-    ration === 'PHOSPHATE'?' اکسید منیزیم ':
-    ration === 'CHLORIDE_POTASSIUM'?'فسفات':
-    ration === 'POTASSIUM_AND_MAGNESIUM_SULFATE'?'ک سولفات پتاسیم و منیزیم لرید پتاسیم ':
+
+    ration === 'MONOCALCIUM_PHOSPHATE'?' مونو کلسیم فسفات ':
+    ration === 'SULFATE_CALCIUM'?'سولفات کلسیم ':
+    ration === 'MAGNESIUM_OXIDE'?' اکسید منیزیم ':
+    ration === 'PHOSPHATE'?'فسفات':
+    ration === 'CHLORIDE_POTASSIUM'?' کلرید پتاسیم ':
+    ration === 'POTASSIUM_AND_MAGNESIUM_SULFATE'?' سولفات پتاسیم و منیزیم   ':
     ration === 'POTASSIUM_SULFATE'?' سولفات پتاسیم ':
     ration === 'SODIUM_CARBONATE'?' کربنات سدیم ':
     ration === 'SODIUM_DIPHOSPHATE'?'دی فسفات سدیم ':

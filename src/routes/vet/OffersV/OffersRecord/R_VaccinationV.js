@@ -21,8 +21,8 @@ const R_BeakV = ({setshow}) => {
   const param = `/NavV/HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}/OffersV`
 
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
   const save =async()=>{
     const body={ epoch_id:EpochId, herd_age, date, name, how_to_use:use }

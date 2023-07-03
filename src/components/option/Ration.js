@@ -11,7 +11,7 @@ return (
   <option value="BONE_MEAL"> پودر استخوان </option>
   <option value="OYSTER_SHELL_FLOUR"> پودر صدف </option>
   <option value="LIMESTONE_POWDER"> آهک پودر  </option>
-  <option value="SOYBEAN_MEAL"> کنجاله سویاv </option>
+  <option value="SOYBEAN_MEAL"> کنجاله سویا </option>
   <option value="CANOLA_MEAL"> کنجاله کانولا </option>
   <option value="CORN_MEAL"> کنجاله ذرت </option>
   <option value="COTTON_SEED_MEAL"> کنجاله تخم پنبه </option>
@@ -44,14 +44,14 @@ return (
   <option value="SALT"> نمک </option>
   <option value="ENZYME"> آنزیم </option>
   <option value="PEA"> نخود </option>
-  <option value="CALCIUM_CARBONATE">c </option>
+  <option value="CALCIUM_CARBONATE">  کلسیم کربنات  </option>
   <option value="DICALCIUM_PHOSPHATE"> دی کلسیم فسفات </option>
   <option value="MONOCALCIUM_PHOSPHATE">  مونو کلسیم فسفات </option>
   <option value="SULFATE_CALCIUM"> سولفات کلسیم </option>
   <option value="MAGNESIUM_OXIDE"> اکسید منیزیم </option>
   <option value="PHOSPHATE"> فسفات </option>
-  <option value="CHLORIDE_POTASSIUM"> ک سولفات پتاسیم و منیزیم لرید پتاسیم </option>
-  <option value="POTASSIUM_AND_MAGNESIUM_SULFATE"></option>
+  <option value="CHLORIDE_POTASSIUM">   کلرید پتاسیم </option>
+  <option value="POTASSIUM_AND_MAGNESIUM_SULFATE"> سولفات پتاسیم و منیزیم </option>
   <option value="POTASSIUM_SULFATE"> سولفات پتاسیم </option>
   <option value="SODIUM_CARBONATE"> کربنات سدیم </option>
   <option value="SODIUM_DIPHOSPHATE"> دی فسفات سدیم </option>

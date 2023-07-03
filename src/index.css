@@ -5,8 +5,8 @@
 @layer components{
   * {@apply text-[#707070] border-slate-400 } 
   img {@apply inline-block }
-  input {@apply rounded border p-1 px-2 text-center }
-  select {@apply rounded border w-full p-1 px-2 text-center } 
+  input {@apply rounded border p-1 px-2 text-center w-[220px] }
+  select {@apply rounded border p-1 px-2 text-center w-[220px] } 
   .bold {@apply font-bold}
   .center {@apply flex justify-center}
   .btn-g {@apply bg-[#00DA1C] text-white w-20 rounded-lg p-1 text-sm }

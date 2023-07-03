@@ -21,8 +21,8 @@ const R_LightClockV = ({setshow}) => {
   const navigate =useNavigate()
 
   useEffect(()=>{
-    HerdAge(setherd_age)
-  },[])
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
   const save =async()=>{
     const body={ epoch_id:EpochId, herd_age, date, light_color, light_intensity, lighting_hours:hours }

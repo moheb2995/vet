@@ -11,10 +11,14 @@ const Loss = () => {
   const [value,setvalue] = useState('')
   const [herd_age, setherd_age] = useState('')
   const [data,setdata] = useState([])
-  const EpochId = useParams().EpochId
   const navigate =useNavigate()
   const params = useParams()
-  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}/View`
+  const EpochId = params.EpochId
+  const param = `/NavF/HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${EpochId}/View`
+
+  useEffect(()=>{
+    if(date){HerdAge(setherd_age,date,EpochId)}
+  },[date])
 
   function putOff(){
     setvalue('');
