@@ -6,9 +6,10 @@ import Cookies from "universal-cookie";
 
 const NavV = () => {
   const [data,setdata] = useState([])
-  const {epoch,farmerName,salonName,setepoch} = useContext(myContext)
+  const {epoch,salonName,setepoch,farmerName} = useContext(myContext)
   const cookies = new Cookies()
   const access = cookies.get('access')
+  
   const navigate =useNavigate()
   const params = useParams()
   const id = params.id
@@ -62,7 +63,8 @@ return (
     </div>
     
     <div className="px-10 mt-2 text-[17px] ">
-      <Link to={`/NavV/HomePageV/${id}`} className='ads_bar'>{params.id?`آقا/خانم ${farmerName}`:''} </Link>
+    {/* <Link to={`/NavV/HomePageV/${id}`} className='ads_bar'>{params.id?`آقا/خانم ${farmerName}`:''} </Link> */}
+    <Link to={`/NavV/HomePageV/${id}`} className='ads_bar'> مرغدار ها </Link>
 
       <Link to={`/NavV/HomePageV/${id}/userId/${params.userId}`} className='ads_bar'>
         / سالن ها 

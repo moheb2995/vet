@@ -15,8 +15,9 @@ const Salons = () => {
     const api=`/api/v1/salons/?farmer_id=${id}`
     Fetch(body,token,setdata,method,api,navigate)
   },[])
+  console.log(data);
 
-if(data.length === 0) return <h1 className="text">سالنی وجود ندارد</h1>
+if(data.length == 0) return <h1 className="text">سالنی وجود ندارد</h1>
 return (
 <div className="center">
   <div className='flex flex-col'>
