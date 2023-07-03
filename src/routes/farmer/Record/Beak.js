@@ -25,6 +25,7 @@ const Beak = () => {
     const method='POST'
     const api=`/api/v1/beak-trimming/`
     Fetch(body,token,setdata,method,api,navigate)
+    putOff()
   }
 
   function putOff(){

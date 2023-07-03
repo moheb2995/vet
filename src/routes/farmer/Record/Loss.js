@@ -32,6 +32,7 @@ const Loss = () => {
     const method='POST'
     const api=`/api/v1/loss/`
     Fetch(body,token,setdata,method,api,navigate)
+    putOff()
   }
   
 return (

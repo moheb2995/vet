@@ -37,6 +37,7 @@ const LightClock = () => {
     const method='POST'
     const api=`/api/v1/lighting/`
     Fetch(body,token,setdata,method,api,navigate)
+    putOff()
   }
 
   const plus =()=> {
