@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState ,useEffect, useContext } from 'react'
+import { myContext } from '../../../../context'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../../components/Fetch'
 import DatePickerV from '../../../../components/DatePickerV';
@@ -14,6 +15,7 @@ const R_BeakV = ({setshow}) => {
   const EpochId = useParams().EpochId
   const params = useParams()
   const param = `/NavV/HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}/OffersV`
+  const {updateG,setupdateG} = useContext(myContext)
 
   useEffect(()=>{
     if(date){HerdAge(setherd_age,date,EpochId)}
@@ -24,7 +26,9 @@ const R_BeakV = ({setshow}) => {
     const token=true
     const method='POST'
     const api=`/api/v1/beak-trimming/`
-    if(date){ Fetch(body,token,setdata,method,api,navigate); setshow(false) }
+    Fetch(body,token,setdata,method,api,navigate)
+    setTimeout(() => {setupdateG(!updateG)}, 1000); 
+    setshow(false)
   }
   
 return (
@@ -36,7 +40,7 @@ return (
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>
-    <button className={value?'btn-g ':'btn-g opacity-60'} onClick={save}>ثبت</button>
+    <button className={value?'btn-g ':'btn-g opacity-60'} disabled={date?false:true} onClick={save}>ثبت</button>
   </div>
 </div>
 )}

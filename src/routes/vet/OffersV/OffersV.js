@@ -10,7 +10,6 @@ import { myContext } from '../../../context'
 const OffersV = () => {
   const [show,setshow] = useState(false)
   const {epoch} = useContext(myContext)
-  console.log(epoch);
 
 return (
 <>

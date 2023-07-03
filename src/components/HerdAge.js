@@ -11,7 +11,7 @@ const HerdAge = (setherd_age,date,id) => {
     }
   })
   .then(res=>res.json())
-  .then(data=>{setherd_age(data.herd_age);console.log(data);})
+  .then(data=>{setherd_age(data.herd_age)})
 
 }
 export default HerdAge

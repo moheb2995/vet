@@ -10,20 +10,19 @@ const BtnEnd = () => {
   const [update,setupdate] = useState(false)
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
-  console.log(epoch);
 
   function ok(){
     const body={ epoch_id }
     const token=true
     const method='POST'
     const api=`/api/v1/epochs/end/`
-    setepoch(epoch)
     
     if(window.confirm(' آیا از این کار اطمینان دارید این عمل غیر قابل بازگشت است')) {
       Fetch(body,token,setdata,method,api,navigate)
       epoch.end_date = 'now'
       setupdate(!update)
     }
+    setepoch(epoch)
   }
 return (
   <div className={epoch.end_date?'hidden':"flex justify-end"}>

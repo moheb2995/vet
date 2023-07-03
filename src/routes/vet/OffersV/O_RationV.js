@@ -1,4 +1,5 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState, useEffect, useContext } from 'react'
+import { myContext } from '../../../context'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
@@ -9,6 +10,7 @@ const O_RationV = () => {
   const [data,setdata] = useState([])
   const navigate =useNavigate()
   const epoch_id = useParams().EpochId
+  const {updateG} = useContext(myContext)
 
   useEffect(()=>{
     const body=undefined
@@ -16,8 +18,9 @@ const O_RationV = () => {
     const method='GET'
     const api=`/api/v1/ration/suggestions/?epoch_id=${epoch_id}`
     Fetch(body,token,setdata,method,api,navigate)
-  },[])
+  },[updateG])
 
+  console.log(updateG);
 if(data.length === 0)return <h1 className="text"> پیشنهادی هنوز ثبت نشده</h1>
 return (
 <div className='flex flex-col text-center mt-4 '>

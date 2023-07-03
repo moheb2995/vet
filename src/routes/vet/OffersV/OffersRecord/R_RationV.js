@@ -1,9 +1,10 @@
-import React, { useState ,useEffect } from 'react'
+import React, { useState ,useEffect, useContext } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import RationOption from '../../../../components/option/Ration'
 import DatePickerF from '../../../../components/DatePickerF';
 import Fetch from '../../../../components/Fetch';
 import HerdAge from '../../../../components/HerdAge';
+import { myContext } from '../../../../context'
 
 const R_RationV = ({setshow}) => {
   const [type, settype] = useState([{name:'',amount:''}])
@@ -12,6 +13,7 @@ const R_RationV = ({setshow}) => {
   const [date, setdate] = useState('')
   const [value,setvalue] = useState('')
   const [herd_age, setherd_age] = useState('')
+  const {updateG,setupdateG} = useContext(myContext)
 
   const location = useLocation().pathname
   const params = useParams()
@@ -28,7 +30,9 @@ const R_RationV = ({setshow}) => {
     const token=true
     const method='POST'
     const api=`/api/v1/ration/suggestions/`
-    if(type[0].amount&&type[0].name){Fetch(body,token,setdata,method,api,navigate); putOff()}
+    Fetch(body,token,setdata,method,api,navigate);
+    setTimeout(() => {setupdateG(!updateG)}, 1000); 
+    putOff()
   }
 
   const plus =()=> {
@@ -37,7 +41,7 @@ const R_RationV = ({setshow}) => {
   }
 
   function putOff(){
-    settype([{name:'', amount:''}]);setvalue('');setdate('');setshow(false)
+    setshow(false)
   }
 
 return (

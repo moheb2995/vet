@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
 
 import Login from "./routes/Login";
 import HomePageV from "./routes/vet/HomePageV";
@@ -41,16 +41,14 @@ import V_SeedV from "./routes/vet/ViewV/V_SeedV";
 import View from "./routes/farmer/View";
 import NotFound from "./NotFound";
 
-
-
 function App() {
+
   
   return <div className="" dir="rtl">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path='*' element={<NotFound />} />
-
 
         <Route path='/NavF' element={<NavF/>} >
           <Route path="HomePage/:id" element={<HomePage />} />

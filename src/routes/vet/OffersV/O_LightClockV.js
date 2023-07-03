@@ -1,4 +1,5 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useState, useEffect, useContext } from 'react'
+import { myContext } from '../../../context'
 import { useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../components/Fetch'
 import Gregorian_to_jalali from '../../../components/Gregorian_to_jalali'
@@ -8,6 +9,7 @@ const O_LightClockV = () => {
   const [data,setdata] = useState([])
   const navigate =useNavigate()
   const EpochId = useParams().EpochId
+  const {updateG} = useContext(myContext)
 
   useEffect(()=>{
     const body=undefined
@@ -15,7 +17,7 @@ const O_LightClockV = () => {
     const method='GET'
     const api=`/api/v1/lighting/suggestions/?epoch_id=${EpochId}`
     Fetch(body,token,setdata,method,api,navigate) 
-  },[])
+  },[updateG])
 
 if(data.length === 0)return <h1 className="text"> پیشنهادی هنوز ثبت نشده</h1>
 return (

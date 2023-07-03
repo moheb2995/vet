@@ -12,7 +12,7 @@ import WeightEgg from './WeightEgg'
 import Beak from './Beak'
 
 const Record = () => {
-  const {epoch,setepoch} = useContext(myContext)
+  const {epoch} = useContext(myContext)
 
 return (
 <div className=''>

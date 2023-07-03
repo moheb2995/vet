@@ -2,18 +2,18 @@ import React, { useEffect, useState, useContext } from 'react'
 import { NavLink,Link, Outlet, useParams,useNavigate } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
 import { myContext } from '../../context'
+import Cookies from "universal-cookie";
 
 const NavV = () => {
   const [data,setdata] = useState([])
-  const {epoch,farmerName,salonName} = useContext(myContext)
-  console.log(farmerName);
-
+  const {epoch,farmerName,salonName,setepoch} = useContext(myContext)
+  const cookies = new Cookies()
+  const access = cookies.get('access')
   const navigate =useNavigate()
-  const id = useParams().id
   const params = useParams()
+  const id = params.id
+  const EpochId = params.EpochId
   const param = `HomePageV/${params.id}/userId/${params.userId}/salonId/${params.salonId}/EpochId/${params.EpochId}`
-  console.log(epoch);
-
 
   useEffect(()=>{
     const body=undefined
@@ -21,6 +21,15 @@ const NavV = () => {
     const method='GET'
     const api=`/api/v1/user-info/`
     Fetch(body,token,setdata,method,api,navigate)
+
+    fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/epochs/detail/?epoch_id=${EpochId}`,{
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access}`
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{setepoch(data);})
   },[])
 
 return (
@@ -29,7 +38,8 @@ return (
 
     <div className='bg-[#6FFFF1] flex justify-between items-center p-2'>
       <div className="flex items-center">
-      <Link className='nav text-slate-700 bold bg-slate-50 rounded' to={`/NavV/HomePageV/${id}`}>
+        {/* to={`/NavV/HomePageV/${id}`} */}
+      <Link className='nav text-slate-700 bold bg-slate-50 rounded' to={`/`} > 
         <img src="/img/home button.png" alt="" className="w-36 " />
       </Link>
         <nav className={params.EpochId?"mx-6":'hidden'}>

@@ -1,4 +1,5 @@
-import React, { useState ,useEffect } from 'react'
+import React, { useState ,useEffect, useContext } from 'react'
+import { myContext } from '../../../../context'
 import { useLocation, useParams, useNavigate } from 'react-router-dom'
 import HerdAge from '../../../../components/HerdAge';
 import Fetch from '../../../../components/Fetch'
@@ -13,6 +14,7 @@ const R_LightClockV = ({setshow}) => {
   const [light_intensity, setlight_intensity] = useState('')
   const [light_color, setlight_color] = useState('')
   const [hours, sethours] = useState([{start_time:'',end_time:''}])
+  const {updateG,setupdateG} = useContext(myContext)
 
   const location = useLocation().pathname
   const params = useParams()
@@ -30,6 +32,7 @@ const R_LightClockV = ({setshow}) => {
     const method='POST'
     const api=`/api/v1/lighting/suggestions/`
     if(value&&light_color&&light_intensity){Fetch(body,token,setdata,method,api,navigate); setshow(false)}
+    setTimeout(() => {setupdateG(!updateG)}, 1000); 
   }
 
   const plus =()=> {
@@ -63,7 +66,7 @@ return (
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>
-    <button className={value&&light_color&&light_intensity?'btn-g ':'btn-g opacity-60 '} onClick={save}>ثبت</button>
+    <button className={value&&light_color&&light_intensity?'btn-g ':'btn-g opacity-60 '} disabled={value&&light_color&&light_intensity?false:true} onClick={save}>ثبت</button>
   </div>
 </div>
 )}

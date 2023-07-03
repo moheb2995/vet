@@ -34,7 +34,7 @@ return (
   </div>
   
   <div className="center">
-    <div className="rounded-lg shadow-lg w-[35vw] p-11 py-8 ">
+    <div className="rounded-lg shadow-lg w-[530px] p-11 py-8 ">
       <div className="grid grid-cols-2 w-full ">
         <div className="">
           <h4 className="">نام کاربری</h4>

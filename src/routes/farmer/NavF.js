@@ -3,23 +3,34 @@ import { NavLink, Link, useNavigate, Outlet, useParams } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
 import { myContext } from '../../context'
 import BtnEnd from '../../components/BtnEnd'
+import Cookies from "universal-cookie";
 
 const NavF = () => {
-  const {epoch,salonName} = useContext(myContext)
+  const {epoch,salonName,setepoch} = useContext(myContext)
   const [data,setdata] = useState([])
   const navigate =useNavigate()
   const id = useParams().id
   const EpochId = useParams().EpochId
   const params = useParams()
   const param = `HomePage/${params.id}/SalonId/${params.SalonId}/EpochId/${params.EpochId}`
+  const cookies = new Cookies()
+  const access = cookies.get('access')
 
-  console.log(params);
   useEffect(()=>{
     const body=undefined
     const token=true
     const method='GET'
     const api=`/api/v1/user-info/`
     Fetch(body,token,setdata,method,api,navigate)
+
+    fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/epochs/detail/?epoch_id=${EpochId}`,{
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access}`
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>{setepoch(data);})
   },[])
 
 return (

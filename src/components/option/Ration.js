@@ -5,7 +5,7 @@ return (
 <>
   <option value=""></option>
   <option value="FISH_MEAL"> پودر ماهی </option>
-  <option value="MEAT_MEAL "> پودر گوشت </option>
+  <option value="MEAT_MEAL"> پودر گوشت </option>
   <option value="BLOOD_MEAL"> پودر خون </option>
   <option value="FEATHER_MEAL"> پودر پر </option>
   <option value="BONE_MEAL"> پودر استخوان </option>
@@ -33,7 +33,7 @@ return (
   <option value="SORGHUM"> سورگوم </option>
   <option value="OIL"> روغن </option>
   <option value="COTTONSEED_OIL"> روغن پنبه دانه </option>
-  <option value="CANOLA_OIL "> روغن کانولا </option>
+  <option value="CANOLA_OIL"> روغن کانولا </option>
   <option value="SUNFLOWER_OIL">  روغن آفتاب گردان </option>
   <option value="LINSEED_OIL"> روغن بزرک </option>
   <option value="PALM_OIL"> روغن پالم </option>
@@ -71,10 +71,10 @@ return (
   <option value="VITAMIN_D"> ویتامین D </option>
   <option value="VITAMIN_A"> ویتامین A </option>
   <option value="VITAMIN_K"> ویتامین K </option>
-  <option value="VITAMIN_E "> ویتامین E </option>
+  <option value="VITAMIN_E"> ویتامین E </option>
   <option value="VITAMIN_C">  ویتامین C </option>
   <option value="VITAMIN_B1"> ویتامین B1 </option>
-  <option value="VITAMIN_B2 ">  ویتامین B2 </option>
+  <option value="VITAMIN_B2">  ویتامین B2 </option>
   <option value="VITAMIN_B6"> ویتامین B6 </option>
   <option value="VITAMIN_B12"> ویتامین B12 </option>
   <option value="B_COMPLEX"> B کمپلکس </option>

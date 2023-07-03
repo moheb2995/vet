@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState ,useEffect, useContext } from 'react'
+import { myContext } from '../../../../context'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Fetch from '../../../../components/Fetch'
 import Use from '../../../../components/option/Use'
@@ -13,6 +14,7 @@ const R_BeakV = ({setshow}) => {
   const [herd_age, setherd_age] = useState('')
   const [use, setuse] = useState('EYE_DROP')
   const [name, setname] = useState('NEWCASTLE')
+  const {updateG,setupdateG} = useContext(myContext)
 
   const location = useLocation().pathname
   const navigate =useNavigate()
@@ -29,7 +31,9 @@ const R_BeakV = ({setshow}) => {
     const token=true
     const method='POST'
     const api=`/api/v1/vaccination/suggestions/`
-    if(name&&use&&value){Fetch(body,token,setdata,method,api,navigate); setshow(false)}
+    Fetch(body,token,setdata,method,api,navigate);
+    setTimeout(() => {setupdateG(!updateG)}, 1000); 
+    setshow(false)
   }
   
 return (
@@ -45,7 +49,7 @@ return (
   </div>
   <div className="flex justify-end mt-10 w-[104%] ">
     <button className='btn-r mx-2' onClick={()=> setshow(false)}>انصراف</button>
-    <button className={name&&use&&value?'btn-g ':'btn-g opacity-60'} onClick={save}>ثبت</button>
+    <button className={name&&use&&value?'btn-g ':'btn-g opacity-60'} disabled={name&&use&&value?false:true} onClick={save}>ثبت</button>
   </div>
 </div>
 )}

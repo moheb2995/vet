@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import Fetch from '../../components/Fetch'
-// import { myContext } from '../../../context'
 import InfoSalon from './InfoSalonV'
 
 const Epoch = () => {
-  // const {epoch,setepoch} = useContext(myContext)
   const [data,setdata] = useState([])
   const [show,setshow] = useState(false)
   const [EpochId,setEpochId] = useState('')
