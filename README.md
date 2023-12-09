@@ -1,4 +1,4 @@
-# 2 tab عقب تر بودن jsx به دلیل مانیتور کوچک است 
+# 2 tab عقب تر بودن jsx به دلیل مانیتور کوچک و راحتی کد نویسی می باشد 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
